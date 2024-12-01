@@ -1,0 +1,130 @@
+html, body {
+
+    background-image: url('public/images/salon2.png') !important; /* Change this path to your actual image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: repeat; /* Avoid repeating the image */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    height: 100vh; /* Sets height of the body to full viewport height */
+
+}
+
+#container {
+
+    width: 60em;
+    box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background: #C8AD7E;
+    margin-top: 120px;
+
+}
+
+#section {
+
+    background: #E3D8B7;
+
+}
+
+.form-control {
+    background: #FFFFFF;
+}
+
+.map {
+
+    filter: hue-rotate(280deg);
+    height: 30em;
+    width: 100%;
+    border-radius: 15px;
+
+}
+
+.margin {
+
+    margin-top: 140px;
+
+}
+.frame {
+
+    border: none;
+
+}
+
+.logo {
+
+    height: 40px;
+
+}
+
+.offcanvas-header {
+    background-color: #BE9D6A;
+}
+
+
+.navbar {
+    background-color: #BE9D6A;
+    height: 80px;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 0.5rem;
+}
+
+.navbar-brand{
+
+    font-size: 1.6rem;
+    font-weight: bold;
+
+}
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black !important;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-button {
+    background-color: black;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover {
+    background-color: #00b383;
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #000;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #009970;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before, .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+}

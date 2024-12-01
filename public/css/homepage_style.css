@@ -1,0 +1,174 @@
+html, body {
+    overflow: hidden;
+    height: 100%;
+    background-color: #E3D8B7;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.main {
+
+    justify-content: space-between;
+    display: flex;
+
+}
+
+.carousel {
+
+    height:50vh;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.margin {
+
+    margin: 100px;
+
+}
+
+.offcanvas-header {
+    background-color: #BE9D6A;
+}
+
+.text_s {
+
+    background-color: white;
+    border-radius: 20px;
+    background-color: #BE9D6A;
+
+}
+
+.carousel img {
+    width:100%;
+    height: auto;
+}
+
+.title {
+
+    font-family: 'Playfair Display', serif;
+    font-size: 78px;
+    color: #333;
+
+    font-weight: bold;
+    text-align: center;
+
+    margin-top: 80px;
+
+}
+
+
+.text {
+
+    font-family: 'Playfair Display', serif;
+    padding: 30px;
+    margin-left: 50px;
+    max-width: 50%;
+
+}
+
+.text_small {
+
+    font-family: 'Playfair Display', serif;
+    flex: 1;
+    font-size: 20px;
+
+}
+
+.logo {
+
+    height: 40px;
+
+}
+
+.navbar {
+    background-color: #BE9D6A;
+    height: 80px;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.navbar-brand{
+
+    font-size: 1.6rem;
+    font-weight: bold;
+
+}
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black !important;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.login-button {
+    background-color: black;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover {
+    background-color: #00b383;
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #000;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #009970;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before, .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.butttn-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+
+}
