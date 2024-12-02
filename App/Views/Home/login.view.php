@@ -1,6 +1,7 @@
 <?php
 
 /** @var Array $data */
+/** @var \App\Models\Review $review */
 
 /** @var \App\Core\LinkGenerator $link */
 ?>
@@ -47,7 +48,7 @@
                     <div class="input-group mb-3">
                         <button class="btn btn-lg btn-light w-100 fs-6"><small>Registrácia</small></button>
                     </div>
-
+                    <a href="<?= $link->url('review.index')?>" class="btn btn-success">Pridať</a>
                 </div>
             </div>
 

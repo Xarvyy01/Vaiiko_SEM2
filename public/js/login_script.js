@@ -55,7 +55,7 @@ document.getElementById('login_button').addEventListener('click', function (even
         string2 = 'Heslo neobsahuje 8 znakov, alebo žiadny špecialný znak';
     }
 
-  if (position_symbol1 == 0 || position_symbol2 == 0) {
+  if (position_symbol1 == 0 || position_symbol2 == 0 || position_symbol2 < position_symbol1) {
 
        string1 = 'Zle napisaný email, prosím Vás opravte si ho';
 
