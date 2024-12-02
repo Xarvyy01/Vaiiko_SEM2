@@ -22,17 +22,21 @@ class ReviewController extends AControllerBase
         return $this->html();
     }
 
-    public function save()
+    public function save(): Response
     {
-        $picture = $this->request()->getValue('picture');
-        $text = $this->request()->getValue('text');
+        $name = $this->request()->getValue('name');
+        $rating = $this->request()->getValue('rating');
+        $sentiment = $this->request()->getValue('sentiment');
+        $messaage = $this->request()->getValue('message');
 
         $review = new Review();
-        $review->setText($text);
-        $review->setPicture($picture);
+        $review->setId($name);
+        $review->setDate(2131331);
+        $review->setRating($rating);
+        $review->setSentiment($sentiment);
+        $review->setText($messaage);
         $review->save();
-
-
+        return  $this->redirect($this->url('review.addReview'));
     }
 
 }

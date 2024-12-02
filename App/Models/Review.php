@@ -9,7 +9,7 @@ class Review extends Model
     protected ?int $id = null;
     protected ?string $text = null;
     protected ?int $date = null;
-    protected ?bool $sentiment = null;
+    protected ?int $sentiment = null;
     protected ?int $rating = null;
 
     public function getId(): ?int
@@ -27,7 +27,7 @@ class Review extends Model
         return $this->date;
     }
 
-    public function getSentiment(): ?bool
+    public function getSentiment(): ?int
     {
         return $this->sentiment;
     }
