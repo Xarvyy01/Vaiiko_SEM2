@@ -44,4 +44,21 @@ class ReviewController extends AControllerBase
         return  $this->redirect($this->url('review.index'));
     }
 
+    public function delete(): Response
+    {
+        $id = $this->request()->getValue('id');
+        $review = Review::getOne($id);
+        $review->delete();
+        return $this->redirect($this->url("review.index"));
+    }
+
+    public function edit(): Response
+    {
+        $id = $this->request()->getValue('id');
+        $review = Review::getOne($id);
+        $review->delete();
+        return $this->redirect($this->url("review.index"));
+    }
+
 }
+
