@@ -17,9 +17,13 @@ class ReviewController extends AControllerBase
         ]);
     }
 
-    public function addReview()
+    public function addReview() : Response
     {
-        return $this->html();
+        $id = $this->request()->getValue('id');
+        $review = Review::getOne($id);
+        return $this->html([
+            'review' => $review
+        ]);
     }
 
     public function test()
@@ -60,5 +64,12 @@ class ReviewController extends AControllerBase
         return $this->redirect($this->url("review.index"));
     }
 
+    public function redirectEdit(): Response
+    {
+        $id = $this->request()->getValue('id');
+
+        return $this->redirect($this->url("review.addReview", ["id" => $id]));
+
+    }
 }
 

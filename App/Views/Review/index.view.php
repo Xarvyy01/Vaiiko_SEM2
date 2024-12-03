@@ -40,7 +40,7 @@
             <div class="client-comment">
                 <p><?= $review->getText() ?></p>
             </div>
-            <a href="" class="btn btn-primary">Upraviť</a>
+            <a href="<?= $link->url('review.redirectEdit', ['id' => $review->getId()]) ?>" class="btn btn-primary">Upraviť</a>
             <a href="<?= $link->url('review.delete', ['id' => $review->getId()]) ?>" class="btn btn-danger">Zmazať</a>
 
         </div>

@@ -6,7 +6,7 @@ use App\Core\Model;
 
 class Review extends Model
 {
-    protected ?int $id = null;
+    protected ?int $id;
     protected ?string $text = null;
     protected ?int $date = null;
     protected ?int $sentiment = null;
