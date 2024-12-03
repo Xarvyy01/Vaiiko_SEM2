@@ -58,9 +58,13 @@ class ReviewController extends AControllerBase
 
     public function edit(): Response
     {
-        $id = $this->request()->getValue('id');
+        $id = $this->request()->getValue('name');
         $review = Review::getOne($id);
-        $review->delete();
+        $review->setText($this->request()->getValue('message'));
+        $review->setSentiment($this->request()->getValue('sentiment'));
+        $review->setRating($this->request()->getValue('rating'));
+
+        $review->save();
         return $this->redirect($this->url("review.index"));
     }
 

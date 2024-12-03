@@ -25,6 +25,7 @@
     <div class="container d-flex justify-content-center align-items-center">
 
         <?php if ($data['review'] !== null): ?>
+        <form method="post" action="<?= $link->url('review.edit')?>">
             <div class="row border rounded-5 p-3 shadow box-area">
                 <div class="col-md-12 right-box">
                     <div class="row align-items-center">
@@ -52,6 +53,7 @@
                     </div>
                 </div>
             </div>
+        </form>
         <?php else: ?>
             <form method="post" action="<?= $link->url('review.save')?>">
              <div class="row border rounded-5 p-3 shadow box-area">
