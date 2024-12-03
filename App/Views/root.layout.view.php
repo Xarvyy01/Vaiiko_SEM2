@@ -47,9 +47,11 @@
                         <a class="nav-link mx-lg-2" href="<?= $link->url("home.gallery") ?>">Galeria</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="<?= $link->url("review.addReview") ?>">Recenzie</a>
+                        <a class="nav-link mx-lg-2" href="<?= $link->url("review.index") ?>">Recenzie</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="<?= $link->url("review.addReview") ?>">Pridaj Recenziu</a>
+                    </li>
                 </ul>
 
             </div>

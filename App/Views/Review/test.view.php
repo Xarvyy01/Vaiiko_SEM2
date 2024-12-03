@@ -15,38 +15,32 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/loginpage_style.css">
-    <link rel="stylesheet" href="public/css/reviewpage_style.css">
+    <link rel="stylesheet" href="public/css//loginpage_style.css">
+    <link rel="stylesheet" href="public/css/button_style.css">
+    <title>Boostrap Login | Ludiflex</title>
 </head>
 <body>
 
 <div class="margin"></div>
 
-<section id="testimonials">
-
-    <div class="testimonial-box-container">
-
-        <?php foreach ($data['reviews'] as $review) : ?>
-
-        <div class="testimonial-box">
-
-            <div class="box-top">
-                <div class="profile">
-                    <div class="name-user">
-                        <strong> <?= $review->getId() ?> </strong>
-                        <span> @ <?= $review->getId() ?> </span>
-                    </div>
+<main>
+    <?php foreach ($data['reviews'] as $review) : ?>
+        <div class="col-3 d-flex gap-4 flex-column">
+            <div class="border post d-flex flex-column">
+                <div class="m-2">
+                    <?= $review->getId() ?>
+                </div>
+                <div class="m-2">
+                    <?= $review->getText() ?>
+                </div>
+                <div class="m-2 d-flex gap-2 justify-content-end">
+                    <a href="" class="btn btn-primary">Upraviť</a>
+                    <a href="" class="btn btn-danger">Zmazať</a>
                 </div>
             </div>
-            <div class="client-comment">
-                <p><?= $review->getText() ?></p>
-            </div>
         </div>
+    <?php endforeach; ?>
+</main>
 
-        <?php endforeach; ?>
-
-    </div>
-
-</section>
 </body>
 </html>

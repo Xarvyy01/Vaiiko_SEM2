@@ -22,6 +22,11 @@ class ReviewController extends AControllerBase
         return $this->html();
     }
 
+    public function test()
+    {
+        return $this->html();
+    }
+
     public function save(): Response
     {
         $name = $this->request()->getValue('name');
@@ -36,7 +41,7 @@ class ReviewController extends AControllerBase
         $review->setSentiment($sentiment);
         $review->setText($messaage);
         $review->save();
-        return  $this->redirect($this->url('review.addReview'));
+        return  $this->redirect($this->url('review.index'));
     }
 
 }
