@@ -49,7 +49,7 @@ class ReviewController extends AControllerBase
             $review->setRating($rating);
         }
 
-        if (is_numeric($sentiment) && ($sentiment >= 0 && $sentiment <= 10)) {
+        if (is_numeric($sentiment) && ($sentiment >= 0 && $sentiment <= 1)) {
             $review->setsentiment($sentiment);
         }
 
