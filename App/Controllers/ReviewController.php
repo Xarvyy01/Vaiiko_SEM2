@@ -39,10 +39,21 @@ class ReviewController extends AControllerBase
         $messaage = $this->request()->getValue('message');
 
         $review = new Review();
-        $review->setId($name);
+        if (is_numeric($name)) {
+            $review->setId($name);
+        }
+
         $review->setDate(2131331);
-        $review->setRating($rating);
-        $review->setSentiment($sentiment);
+
+
+        if (is_numeric($rating) && ($rating >= 0 && $rating <= 10)) {
+            $review->setRating($rating);
+        }
+
+        if (is_numeric($sentiment) && ($sentiment >= 0 && $sentiment <= 10)) {
+            $review->setsentiment($sentiment);
+        }
+
         $review->setText($messaage);
         $review->save();
         return  $this->redirect($this->url('review.index'));

@@ -24,11 +24,15 @@ document.getElementById('login_button').addEventListener('click', function (even
         error2 = "Hodnotenie musí byť číslo";
     }
 
-    if ((rating < 0 && rating > 10) || rating === "") {
+    let num = Number(rating);
+
+    if (!(num >= 0 && num <= 10) || rating === "") {
         error3 = "Hodnotenie musí byť od 0 až po 10";
     }
 
-    if (!isNumber(sentiment) || (sentiment < 0 && sentiment > 1) || sentiment == "") {
+    num = Number(sentiment);
+
+    if (!isNumber(sentiment) || !(num >= 0 && num <= 1) || sentiment == "") {
         error4 = "Hodnotenie musí byť číslo 0 alebo 1";
     }
 
