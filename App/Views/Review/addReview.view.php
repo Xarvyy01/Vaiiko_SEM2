@@ -92,6 +92,7 @@
 
 </main>
 
+<script src="public/js/review_script.js"></script>
 
 </body>
 </html>
