@@ -43,8 +43,7 @@ class ReviewController extends AControllerBase
             $review->setId($name);
         }
 
-        $review->setDate(2131331);
-
+        $review->setDate((int) date('Ymd'));
 
         if (is_numeric($rating) && ($rating >= 0 && $rating <= 10)) {
             $review->setRating($rating);
