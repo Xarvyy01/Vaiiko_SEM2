@@ -31,7 +31,7 @@
             <div class="col-md-12 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h2>Prihláseniť Sa</h2>
+                        <h2>Prihlásiť Sa</h2>
                         <p>Prihlás sa, a objednaj sa na strihanie</p>
                     </div>
                     <div class="input-group mb-4">
