@@ -32,8 +32,9 @@
             <div class="box-top">
                 <div class="profile">
                     <div class="name-user">
-                        <strong> <?= $review->getId() ?> </strong>
+                        <strong class="align-right"> <?= $review->getRating() ?>/10 </strong>
                         <span> @ <?= $review->getId() ?> </span>
+                        <span> <?= $review->getDate() ?> </span>
                     </div>
                 </div>
             </div>
