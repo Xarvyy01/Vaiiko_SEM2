@@ -3,6 +3,7 @@
 /** @var Array $data */
 
 /** @var \App\Core\LinkGenerator $link */
+/** @var \App\Core\IAuthenticator $auth */
 ?>
 
 

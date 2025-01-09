@@ -2,6 +2,7 @@
 
 /** @var Array $data */
 /** @var \App\Models\Review $review */
+/** @var \App\Models\User $user */
 
 /** @var \App\Core\LinkGenerator $link */
 ?>
@@ -24,6 +25,9 @@
 <div class="margin"></div>
 
 <main>
+    <?php foreach ($data['users'] as $user) : ?>
+    <?php endforeach; ?>
+
     <?php foreach ($data['reviews'] as $review) : ?>
         <div class="col-3 d-flex gap-4 flex-column">
             <div class="border post d-flex flex-column">

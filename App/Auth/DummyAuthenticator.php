@@ -2,6 +2,7 @@
 
 namespace App\Auth;
 
+use App\Models\User;
 use App\Core\IAuthenticator;
 
 /**
@@ -32,8 +33,21 @@ class DummyAuthenticator implements IAuthenticator
      */
     public function login($login, $password): bool
     {
-        if ($login == self::LOGIN && password_verify($password, self::PASSWORD_HASH)) {
-            $_SESSION['user'] = self::USERNAME;
+        $users = User::getAll();
+        $final_user = null;
+
+        foreach ($users as $user)
+        {
+            if ($user->getEmail() == $login) {
+                $final_user = $user;
+            }
+        }
+
+        if ($final_user == null) { echo "<p style='color: red;'>Nesprávny e-mail!</p>"; }
+
+
+        if ($password == $final_user->getPassword()) {
+            $_SESSION['user'] = $final_user->getId();
             return true;
         } else {
             return false;

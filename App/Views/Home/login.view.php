@@ -4,6 +4,8 @@
 /** @var \App\Models\Review $review */
 
 /** @var \App\Core\LinkGenerator $link */
+/** @var string $contentHTML */
+/** @var \App\Core\IAuthenticator $auth */
 ?>
 
 
@@ -34,20 +36,22 @@
                         <h2>Prihlásiť Sa</h2>
                         <p>Prihlás sa, a objednaj sa na strihanie</p>
                     </div>
-                    <div class="input-group mb-4">
-                        <input id="email" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">
-                    </div>
-                    <div class="input-group">
-                        <input id="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
-                    </div>
-                    <div class="input-group mb-5 d-flex justify-content-between">
-                    </div>
-                    <div class="input-group mb-3">
-                        <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Prihlásenie</button>
-                    </div>
-                    <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-light w-100 fs-6"><small>Registrácia</small></button>
-                    </div>
+                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
+                        <div class="input-group mb-4">
+                            <input id="email" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">
+                        </div>
+                        <div class="input-group">
+                            <input id="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
+                        </div>
+                            <div class="input-group mb-5 d-flex justify-content-between">
+                        </div>
+                        <div class="input-group mb-3">
+                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Prihlásenie</button>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-lg btn-light w-100 fs-6"><small>Registrácia</small></button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

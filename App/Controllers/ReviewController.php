@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Review;
+use App\Models\User;
 
 class ReviewController extends AControllerBase
 {
@@ -28,7 +29,10 @@ class ReviewController extends AControllerBase
 
     public function test()
     {
-        return $this->html();
+        return $this->html([
+            'reviews' => Review::getAll(),
+            'users' => User::getAll()
+        ]);
     }
 
     public function save(): Response
