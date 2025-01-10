@@ -48,10 +48,14 @@ class DummyAuthenticator implements IAuthenticator
 
         if ($password == $final_user->getPassword()) {
             $_SESSION['user'] = $final_user->getId();
+            $test =$this->isLogged();
             return true;
         } else {
             return false;
         }
+
+
+
     }
 
     /**

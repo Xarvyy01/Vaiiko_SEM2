@@ -33,24 +33,32 @@
             <div class="col-md-12 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h2>Prihlásiť Sa</h2>
-                        <p>Prihlás sa, a objednaj sa na strihanie</p>
+                        <h2>Registrovať Sa</h2>
+                        <p>Registruj sa, a získaj výhody</p>
                     </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
-                        <div class="input-group mb-4">
-                            <input id="email" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">
+                    <form class="form-signin" method="post" action="<?= $link->url("register") ?>">
+
+                        <div class="form-label-group mb-4">
+                            <input id="email" type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">
                         </div>
-                        <div class="input-group">
-                            <input id="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
+                        <div class="form-label-group mb-4">
+                            <input name="name_first" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Meno">
                         </div>
-                            <div class="input-group mb-5 d-flex justify-content-between">
+                        <div class="form-label-group mb-4">
+                            <input name="name_second" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Priezvisko">
+                        </div>
+                        <div class="form-label-group mb-4">
+                            <input name="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
+                        </div>
+                        <div class="form-label-group mb-4">
+                            <input name="password_second" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Potvrdte Heslo">
+                        </div>
+                        <div class="form-label-group mb-5 d-flex justify-content-between">
                         </div>
                         <div class="input-group mb-3">
-                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Prihlásenie</button>
+                            <button class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Registrovať</small></button>
                         </div>
-                        <div class="input-group mb-3">
-                            <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.registration") ?>"><small>Registrácia</small></a>
-                        </div>
+
                     </form>
                 </div>
             </div>
