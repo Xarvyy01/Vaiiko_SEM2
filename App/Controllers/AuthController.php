@@ -74,7 +74,6 @@ class AuthController extends AControllerBase
         $password = $this->request()->getValue('password');
 
         $user = new User();
-        $user->setId(3);
         $user->setEmail($email);
         $user->setNameFirst($name_first);
         $user->setNameSecond($name_second);

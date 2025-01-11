@@ -46,7 +46,7 @@
                             <div class="input-group mb-5 d-flex justify-content-between">
                         </div>
                         <div class="input-group mb-3">
-                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Prihlásenie</button>
+                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6" type="submit" name="submit">Prihlásenie</button>
                         </div>
                         <div class="input-group mb-3">
                             <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.registration") ?>"><small>Registrácia</small></a>
