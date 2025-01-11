@@ -35,8 +35,8 @@
             <div class="box-top">
                 <div class="profile">
                     <div class="name-user">
-                        <strong class="align-right"> afdwaf/10 </strong>
-                        <span> @ fawfawf</span>
+                        <strong class="text-center"> <?= $reservation->getTimeFrom() ?> -  <?= $reservation->getTimeTo() ?></strong>
+                        <span> @ <?= $reservation->getClientId() ?> </span>
                         <span> wafawf</span>
                     </div>
                 </div>
