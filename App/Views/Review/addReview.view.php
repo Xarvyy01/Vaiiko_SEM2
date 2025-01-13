@@ -21,13 +21,17 @@
 
 <main>
 
+
+
     <div class="container d-flex justify-content-center align-items-center">
+
 
         <?php if ($data['review'] !== null): ?>
         <form method="post" action="<?= $link->url('review.edit')?>">
             <div class="row border rounded-5 p-3 shadow box-area">
                 <div class="col-md-12 right-box">
                     <div class="row align-items-center">
+
                         <div class="header-text mb-4">
                             <h2>Recenzia</h2>
                             <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
@@ -76,6 +80,14 @@
         <?php endif; ?>
 
 
+
+    </div>
+
+    <div class="text-center">
+        <?php if ($data['ret'] != null) {
+            echo '<p>"' . $data['ret'] . '"</p>';
+        }
+        ?>
     </div>
 
 </main>

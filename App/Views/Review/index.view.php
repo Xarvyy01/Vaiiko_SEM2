@@ -28,6 +28,7 @@
 
     <div class="testimonial-box-container">
 
+
         <?php foreach ($data['reviews'] as $review) : ?>
 
         <div class="testimonial-box">
@@ -86,4 +87,5 @@
 
 </section>
 </body>
+
 </html>

@@ -92,17 +92,20 @@ class AuthController extends AControllerBase
         return $this->redirect($this->url("auth.login"));
     }
 
-    public function checkDuplicity() : bool
+    public function checkDuplicity()
     {
-        $email = '';
+        $data = $this->request()->getRawBodyJSON();
+        $email = $data->email;
         $users = User::getAll();
-
+        $ret = false;
         foreach ($users as $user) {
             if ($user->getEmail() == $email) {
-                return true;
+                $ret = true;
             }
         }
 
-        return false;
+
+        return $this->json(["ret" => $ret]);
+
     }
 }

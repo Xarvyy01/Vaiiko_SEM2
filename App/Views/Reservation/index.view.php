@@ -134,12 +134,11 @@
                             echo ' <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.delete", ['id' => $reservation->getId()]) .'">Vymazať Termín</a>';
                         }
                         if ($authorization->getUserId() == $auth->getLoggedUserId() && ($authorization->getPermissionId() == "4")) {
-                            echo ' <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) .'">Zruš Klienta</a>';
+                            echo ' <a style="width: 200px;" id="cancel_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) .'">Zruš Klienta</a>';
                         }
                     }
                 }
                 ?>
-
 
             </div>
 
@@ -150,5 +149,6 @@
     </div>
 
 </section>
+<script src="public/js/reserve.js"></script>
 </body>
 </html>

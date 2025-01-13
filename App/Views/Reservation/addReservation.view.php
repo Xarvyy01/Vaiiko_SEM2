@@ -57,6 +57,15 @@
 
         </div>
     </div>
+    <div class="text-center">
+        <?php if ($data['err1'] != null) {
+            echo '<p>"' . $data['err1'] . '"</p>';
+        }
+        if ($data['err2'] != null) {
+            echo '<p>"' . $data['err2'] . '"</p>';
+        }
+        ?>
+    </div>
 </main>
 
 <script src="public/js/reservation_script.js"> </script>
