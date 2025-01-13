@@ -2,6 +2,7 @@
 
 /** @var Array $data */
 /** @var \App\Models\Review $review */
+/** @var \App\Models\User $user */
 
 /** @var \App\Core\LinkGenerator $link */
 ?>
@@ -33,8 +34,28 @@
                 <div class="profile">
                     <div class="name-user">
                         <strong class="align-right"> <?= $review->getRating() ?>/10 </strong>
-                        <span> @ <?= $review->getId() ?> </span>
-                        <span> <?= $review->getDate() ?> </span>
+                        <?php
+                            foreach ($data['users'] as $user)
+                                {
+                                    if ($user->getId() == $review->getClientId()) {
+                                        $userFirstName = $user->getNameFirst();
+                                        $userSecondName = $user->getNameSecond();
+                                    }
+                                }
+                                echo '<span class="text-center"> ' .$userFirstName. ' ' .$userSecondName. '</span>';
+
+                        ?>
+                        <?php
+                        $dateString = $review->getDate();
+                        $year = substr($dateString, 0, 4);
+                        $month = substr($dateString, 4, 2);
+                        $day = substr($dateString, 6, 2);
+
+
+                        $formattedDate = $day . '.' . $month . '.' . $year;
+                        echo '<span>' . $formattedDate . '</span>';
+                        ?>
+
                     </div>
                 </div>
             </div>

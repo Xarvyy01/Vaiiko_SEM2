@@ -3,6 +3,7 @@
 /** @var Array $data */
 
 /** @var \App\Models\Reservation $reservation */
+/** @var \App\Models\User $user */
 
 /** @var \App\Core\LinkGenerator $link */
 /** @var \App\Core\IAuthenticator $auth */
@@ -32,18 +33,76 @@
 
 
         <div class="testimonial-box">
-            <div class="box-top">
+            <div class="box-top justify-content-center">
                 <div class="profile">
                     <div class="name-user">
-                        <strong class="text-center"> <?= $reservation->getTimeFrom() ?> -  <?= $reservation->getTimeTo() ?></strong>
-                        <span> @ <?= $reservation->getClientId() ?> </span>
-                        <span> wafawf</span>
+                        <?php
+
+                        $timeString = $reservation->getTimeFrom();
+
+                        if (strpos($timeString, '.') !== false) {
+
+                            list($hours, $minutes) = explode('.', $timeString);
+
+
+                            $minutes = intval($minutes);
+                            if ($minutes == 5) {
+                                $minutes = 30;
+                            } elseif ($minutes == 25) {
+                                $minutes = 15;
+                            } elseif ($minutes == 75) {
+                                $minutes = 45;
+                            } else {
+                                $minutes = 0;
+                            }
+                        } else {
+
+                            $hours = intval($timeString);
+                            $minutes = 0;
+                        }
+
+
+                        $time = sprintf('%02d:%02d', $hours, $minutes);
+
+                        echo '<strong class="text-center">' .$time. '</strong>';
+
+                        ?>
+
+                        <?php
+
+                            $dateString = $reservation->getDate();
+                            $year = substr($dateString, 0, 4);
+                            $month = substr($dateString, 4, 2);
+                            $day = substr($dateString, 6, 2);
+
+
+                            $formattedDate = $day . '.' . $month . '.' . $year;
+                            echo '<strong class="text-center">' . $formattedDate . '</strong>';
+
+                        ?>
+
+                        <?php
+
+                            if($reservation->getClientId() != null) {
+                                foreach ($data['users'] as $user)
+                                {
+                                    if ($user->getId() == $reservation->getClientId()) {
+                                        $userFirstName = $user->getNameFirst();
+                                        $userSecondName = $user->getNameSecond();
+                                    }
+                                }
+                                echo '<span class="text-center">' .$userFirstName. ' ' .$userSecondName. '</span>';
+                            } else {
+                                echo '<span class="text-center"> Voľné </span>';
+                            }
+
+
+                        ?>
+
                     </div>
                 </div>
             </div>
-            <div class="client-comment">
-                <p>wfawfwafawf</p>
-            </div>
+
 
             <div class="row align-items-center justify-content-center gap-4">
 
@@ -58,6 +117,9 @@
                     }
                 }
                 ?>
+
+                <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="<?= $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) ?>"">Zruš Klienta</a>
+                <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="<?= $link->url("reservation.delete", ['id' => $reservation->getId()]) ?>"">Vymazať Termín</a>
 
             </div>
 

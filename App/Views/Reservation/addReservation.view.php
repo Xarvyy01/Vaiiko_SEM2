@@ -33,27 +33,25 @@
             <div class="col-md-12 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h2>Prihlásiť Sa</h2>
-                        <p>Prihlás sa, a objednaj sa na strihanie</p>
+                        <h2>Pridajte termín na rezerváciu</h2>
+                        <p>Vyplnte prosím všetky polia</p>
                     </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
-                        <div class="form-label-group mb-3">
-                            <input name="login" type="text" id="login" class="form-control" placeholder="Login"
-                                   required autofocus>
+                    <form class="form-signin" method="post" action="<?= $link->url("add") ?>">
+
+                        <div class="form-label-group mb-4">
+                            <input id="email" type="text" name="timeFrom" class="form-control form-control-lg bg-light fs-6" placeholder="Čas od kedy termín začína">
+                        </div>
+                        <div class="form-label-group mb-4">
+                            <input name="date" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Dátum termínu">
+                        </div>
+                        <div class="form-label-group mb-5 d-flex justify-content-between">
                         </div>
 
-                        <div class="form-label-group mb-3">
-                            <input name="password" type="password" id="password" class="form-control"
-                                   placeholder="Password" required>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Pridať Termín</small></button>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-lg btn-dark w-100 fs-6 mb-3" type="submit" name="submit">Prihlásiť
-                            </button>
-                        </div>
+
                     </form>
-                    <div class="input-group mb-3">
-                        <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.registration") ?>"><small>Registrácia</small></a>
-                    </div>
                 </div>
             </div>
 

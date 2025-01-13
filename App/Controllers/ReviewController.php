@@ -14,7 +14,8 @@ class ReviewController extends AControllerBase
     public function index(): Response
     {
         return $this->html([
-            'reviews' => Review::getAll()
+            'reviews' => Review::getAll(),
+            'users' => User::getAll()
         ]);
     }
 

@@ -10,7 +10,6 @@ class Reservation extends Model
     protected ?int $id;
     protected ?int $date = null;
     protected ?float $time_from = null;
-    protected ?float $time_to = null;
     protected ?int $client_id = null;
 
     public function getId(): ?int
@@ -48,10 +47,6 @@ class Reservation extends Model
         return $this->time_to;
     }
 
-    public function setTimeTo(?float $time_to): void
-    {
-        $this->time_to = $time_to;
-    }
 
     public function getClientId(): ?int
     {
@@ -62,7 +57,5 @@ class Reservation extends Model
     {
         $this->client_id = $client_id;
     }
-
-
 
 }

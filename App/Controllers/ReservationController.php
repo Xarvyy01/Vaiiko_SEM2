@@ -15,9 +15,15 @@ class ReservationController extends AControllerBase
     public function index(): Response
     {
         return $this->html([
-            'reservations' => Reservation::getAll()
+            'reservations' => Reservation::getAll(),
+            'users' => User::getAll()
         ]);
 
+    }
+
+    public function addReservation(): Response
+    {
+        return $this->html();
     }
 
     public function isLogged(): bool
@@ -51,6 +57,31 @@ class ReservationController extends AControllerBase
         $reservation->setClientId(null);
         $reservation->save();
 
+        return  $this->redirect($this->url('reservation.index'));
+
+    }
+
+    public function add(): Response
+    {
+        $reservation = new Reservation();
+        $timeFrom = $this->request()->getValue('timeFrom');
+
+        $date = $this->request()->getValue('date');
+
+        $reservation->setTimeFrom($timeFrom);
+
+        $reservation->setDate($date);
+
+        $reservation->save();
+
+        return  $this->redirect($this->url('reservation.index'));
+    }
+
+    public function delete(): Response
+    {
+        $id = $this->request()->getValue('id');
+        $reservation = Reservation::getOne($id);
+        $reservation->delete();
         return  $this->redirect($this->url('reservation.index'));
 
     }

@@ -11,6 +11,7 @@ class Review extends Model
     protected ?int $date = null;
     protected ?int $sentiment = null;
     protected ?int $rating = null;
+    protected ?int $client_id = null;
 
     public function getId(): ?int
     {
@@ -66,4 +67,15 @@ class Review extends Model
     {
         return "reviews";
     }
+
+    public function getClientId(): ?int
+    {
+        return $this->client_id;
+    }
+
+    public function setClientId(?int $client_id): void
+    {
+        $this->client_id = $client_id;
+    }
+
 }
