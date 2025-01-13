@@ -40,7 +40,7 @@ $layout = 'auth';
                     </div>
                     <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
                         <div class="form-label-group mb-3">
-                            <input name="login" type="text" id="login" class="form-control" placeholder="Login"
+                            <input name="login" type="text" id="email" class="form-control" placeholder="Login"
                                    required autofocus>
                         </div>
 
@@ -49,7 +49,7 @@ $layout = 'auth';
                                    placeholder="Password" required>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-lg btn-dark w-100 fs-6 mb-3" type="submit" name="submit">Prihlásiť
+                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6 mb-3" type="submit" name="submit">Prihlásiť
                             </button>
                         </div>
                     </form>

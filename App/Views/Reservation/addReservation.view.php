@@ -39,16 +39,16 @@
                     <form class="form-signin" method="post" action="<?= $link->url("add") ?>">
 
                         <div class="form-label-group mb-4">
-                            <input id="email" type="text" name="timeFrom" class="form-control form-control-lg bg-light fs-6" placeholder="Čas od kedy termín začína">
+                            <input id="time" type="text" name="timeFrom" class="form-control form-control-lg bg-light fs-6" placeholder="Čas od kedy termín začína">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input name="date" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Dátum termínu">
+                            <input id="date" name="date" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Dátum termínu">
                         </div>
                         <div class="form-label-group mb-5 d-flex justify-content-between">
                         </div>
 
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Pridať Termín</small></button>
+                            <button id="button" class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Pridať Termín</small></button>
                         </div>
 
                     </form>
@@ -59,7 +59,7 @@
     </div>
 </main>
 
-<script src="public/js/login_script.js"> </script>
+<script src="public/js/reservation_script.js"> </script>
 
 </body>
 </html>

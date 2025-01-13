@@ -42,21 +42,21 @@
                             <input id="email" type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input name="name_first" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Meno">
+                            <input id="name_first" name="name_first" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Meno">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input name="name_second" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Priezvisko">
+                            <input id="name_second" name="name_second" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Priezvisko">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input name="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
+                            <input id="password" name="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input name="password_second" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Potvrdte Heslo">
+                            <input id="password2" name="password_second" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Potvrdte Heslo">
                         </div>
                         <div class="form-label-group mb-5 d-flex justify-content-between">
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Registrovať</small></button>
+                            <button id="register_button" class="btn btn-lg btn-light w-100 fs-6 btn-dark"><small>Registrovať</small></button>
                         </div>
 
                     </form>
@@ -67,7 +67,7 @@
     </div>
 </main>
 
-<script src="public/js/login_script.js"> </script>
+<script src="public/js/register_script.js"> </script>
 
 </body>
 </html>
