@@ -58,6 +58,9 @@
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="<?= $link->url("reservation.addReservation") ?>">Pridajte Rezerváciu</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="<?= $link->url("auth.logout") ?>">Odhlásiť</a>
+                    </li>
                 </ul>
 
             </div>

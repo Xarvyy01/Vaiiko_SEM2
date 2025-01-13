@@ -108,13 +108,21 @@
 
                 <?php
                 if ($reservation->getClientId() == null) {
-                    echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.reserve", ["id" => $reservation->getId()]) . '">Rezervovať</a>';
+
+                    if ($auth->isLogged()) {
+                        echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.reserve", ["id" => $reservation->getId()]) . '">Rezervovať</a>';
+                    }
+
                 } else {
-                    if ($reservation->getClientId() == $auth->getLoggedUserId()) {
-                        echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ["id" => $reservation->getId()]) . '">Zruš Rezerváciu</a>';
+
+                    if ($auth->isLogged()) {
+                        if ($reservation->getClientId() == $auth->getLoggedUserId()) {
+                            echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ["id" => $reservation->getId()]) . '">Zruš Rezerváciu</a>';
+                        }
                     } else {
                         echo '<p class="text-center">Termín už bol zarezervovaný!</p>';
                     }
+
                 }
                 ?>
 

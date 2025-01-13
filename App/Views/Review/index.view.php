@@ -66,7 +66,7 @@
             <div class="row align-items-center justify-content-center gap-4">
 
                 <a href="<?= $link->url('review.redirectEdit', ['id' => $review->getId()]) ?>" style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6">Upraviť</a>
-                <a href="<?= $link->url('review.delete', ['id' => $review->getId()]) ?> " style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6">Zmazať</a>
+                <a href="<?= $link->url('review.delete', ['id' => $review->getId()]) ?> " style="width: 200px;" id="delete_button" class="btn btn-lg btn-dark fs-6">Zmazať</a>
 
             </div>
 

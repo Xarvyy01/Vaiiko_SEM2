@@ -6,10 +6,42 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Authorization;
 
 class ReviewController extends AControllerBase
 {
 
+    public function authorize(string $action)
+    {
+        switch ($action) {
+
+            case "add_review":
+            case "save": {
+                if ($this->app->getAuth()->isLogged()) {
+                    return true;
+                }
+                return false;
+            }
+            case "delete":
+            case "redirectEdit": {
+                if ($this->app->getAuth()->isLogged()) {
+
+                    $id = $this->request()->getValue('id');
+                    $review = Review::getOne($id);
+
+                    $authorizations = Authorization::getAll();
+                    foreach ($authorizations as $authorization) {
+                        if ($authorization->getUserId() == $this->app->getAuth()->getLoggedUserId() && $this->app->getAuth()->getLoggedUserId() == $review->getClientId()) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            default: { return true; }
+
+        }
+    }
 
     public function index(): Response
     {
@@ -57,7 +89,7 @@ class ReviewController extends AControllerBase
         if (is_numeric($sentiment) && ($sentiment >= 0 && $sentiment <= 1)) {
             $review->setsentiment($sentiment);
         }
-
+        $review->setClientId($this->app->getAuth()->getLoggedUserId());
         $review->setText($messaage);
         $review->save();
         return  $this->redirect($this->url('review.index'));
