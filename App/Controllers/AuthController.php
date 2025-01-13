@@ -73,12 +73,13 @@ class AuthController extends AControllerBase
         $name_second = $this->request()->getValue('name_second');
         $email = $this->request()->getValue('email');
         $password = $this->request()->getValue('password');
+        $pass = password_hash($password, PASSWORD_BCRYPT);
 
         $user = new User();
         $user->setEmail($email);
         $user->setNameFirst($name_first);
         $user->setNameSecond($name_second);
-        $user->setPassword($password);
+        $user->setPassword($pass);
 
         $user->save();
 
@@ -89,5 +90,19 @@ class AuthController extends AControllerBase
         $authorization->save();
 
         return $this->redirect($this->url("auth.login"));
+    }
+
+    public function checkDuplicity() : bool
+    {
+        $email = '';
+        $users = User::getAll();
+
+        foreach ($users as $user) {
+            if ($user->getEmail() == $email) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
