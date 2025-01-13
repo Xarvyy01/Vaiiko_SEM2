@@ -7,6 +7,7 @@
 
 /** @var \App\Core\LinkGenerator $link */
 /** @var \App\Core\IAuthenticator $auth */
+/** @var \App\Models\Authorization $authorization */
 ?>
 
 
@@ -109,9 +110,9 @@
                 <?php
                 if ($reservation->getClientId() == null) {
 
-                    if ($auth->isLogged()) {
+
                         echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.reserve", ["id" => $reservation->getId()]) . '">Rezervovať</a>';
-                    }
+
 
                 } else {
 
@@ -126,8 +127,19 @@
                 }
                 ?>
 
-                <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="<?= $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) ?>"">Zruš Klienta</a>
-                <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="<?= $link->url("reservation.delete", ['id' => $reservation->getId()]) ?>"">Vymazať Termín</a>
+                <?php
+                if ($auth->isLogged()) {
+                    foreach ($data['authorizations'] as $authorization) {
+                        if ($authorization->getUserId() == $auth->getLoggedUserId() && ($authorization->getPermissionId() == "3")) {
+                            echo ' <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.delete", ['id' => $reservation->getId()]) .'">Vymazať Termín</a>';
+                        }
+                        if ($authorization->getUserId() == $auth->getLoggedUserId() && ($authorization->getPermissionId() == "4")) {
+                            echo ' <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) .'">Zruš Klienta</a>';
+                        }
+                    }
+                }
+                ?>
+
 
             </div>
 

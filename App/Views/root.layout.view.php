@@ -3,6 +3,10 @@
 /** @var string $contentHTML */
 /** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
+/** @var \App\Models\User $user */
+/** @var \App\Models\Authorization $authorizations */
+/** @var \App\Models\Authorization $authorization */
+
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -52,15 +56,35 @@
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="<?= $link->url("review.index") ?>">Recenzie</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="<?= $link->url("review.addReview") ?>">Pridaj Recenziu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="<?= $link->url("reservation.addReservation") ?>">Pridajte Rezerváciu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="<?= $link->url("auth.logout") ?>">Odhlásiť</a>
-                    </li>
+                    <?php
+                    if ($auth->isLogged()) {
+                        echo '<li class="nav-item">  
+                               <a class="nav-link mx-lg-2" href="' . $link->url("review.addReview") . '">Pridaj Recenziu</a>  
+                                </li>';
+                    }
+                    ?>
+
+                    <?php
+                        if ($auth->isLogged()) {
+                            $authorizations = \App\Models\Authorization::getAll();
+                            foreach ($authorizations as $authorization) {
+                                if ($authorization->getUserId() == $auth->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                                    echo '<li class="nav-item">
+                                            <a class="nav-link mx-lg-2" href="'. $link->url("reservation.addReservation") .'">Pridajte Rezerváciu</a>
+                                            </li>';
+                                }
+                            }
+                        }
+                    ?>
+
+                    <?php
+                    if ($auth->isLogged()) {
+                        echo '<li class="nav-item">  
+                               <a class="nav-link mx-lg-2" href="' . $link->url("auth.logout") . '">Odhlásiť</a>  
+                                </li>';
+                    }
+                    ?>
+
                 </ul>
 
             </div>

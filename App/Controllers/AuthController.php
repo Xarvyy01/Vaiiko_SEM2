@@ -7,6 +7,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
 use App\Models\User;
+use App\Models\Authorization;
 
 /**
  * Class AuthController
@@ -80,6 +81,13 @@ class AuthController extends AControllerBase
         $user->setPassword($password);
 
         $user->save();
+
+        $user_id = $user->getId();
+        $authorization = new Authorization();
+        $authorization->setUserId($user_id);
+        $authorization->setPermissionId(1);
+        $authorization->save();
+
         return $this->redirect($this->url("auth.login"));
     }
 }

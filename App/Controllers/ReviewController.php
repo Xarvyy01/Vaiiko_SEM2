@@ -47,7 +47,8 @@ class ReviewController extends AControllerBase
     {
         return $this->html([
             'reviews' => Review::getAll(),
-            'users' => User::getAll()
+            'users' => User::getAll(),
+            'authorizations' => Authorization::getAll()
         ]);
     }
 
@@ -72,13 +73,9 @@ class ReviewController extends AControllerBase
     {
         $name = $this->request()->getValue('name');
         $rating = $this->request()->getValue('rating');
-        $sentiment = $this->request()->getValue('sentiment');
         $messaage = $this->request()->getValue('message');
 
         $review = new Review();
-        if (is_numeric($name)) {
-            $review->setId($name);
-        }
 
         $review->setDate((int) date('Ymd'));
 
@@ -86,9 +83,7 @@ class ReviewController extends AControllerBase
             $review->setRating($rating);
         }
 
-        if (is_numeric($sentiment) && ($sentiment >= 0 && $sentiment <= 1)) {
-            $review->setsentiment($sentiment);
-        }
+
         $review->setClientId($this->app->getAuth()->getLoggedUserId());
         $review->setText($messaage);
         $review->save();
@@ -105,10 +100,13 @@ class ReviewController extends AControllerBase
 
     public function edit(): Response
     {
-        $id = $this->request()->getValue('name');
+        foreach (Review::getAll() as $review_temp) {
+            if ($review_temp->getClientId() == $this->app->getAuth()->getLoggedUserId()) {
+                $id = $review_temp->getId();
+            }
+        }
         $review = Review::getOne($id);
         $review->setText($this->request()->getValue('message'));
-        $review->setSentiment($this->request()->getValue('sentiment'));
         $review->setRating($this->request()->getValue('rating'));
 
         $review->save();

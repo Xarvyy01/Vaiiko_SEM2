@@ -33,13 +33,7 @@
                             <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
                         </div>
                         <div class="input-group mb-4">
-                            <input id="name" name="name" type="text" class="form-control form-control-lg bg-light fs-6" value="<?=htmlspecialchars($data['review']->getId())?>">
-                        </div>
-                        <div class="input-group mb-4">
                             <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" value="<?=htmlspecialchars($data['review']->getRating()) ?>">
-                        </div>
-                        <div class="input-group mb-4">
-                            <input id="sentiment" name="sentiment" type="text" class="form-control form-control-lg bg-light fs-6" value="<?=htmlspecialchars($data['review']->getSentiment()) ?>">
                         </div>
                         <div class="input-group">
                             <textarea class="form-control mb-3" name="message" id="text" style="height: 7em; resize: none;"><?=htmlspecialchars($data['review']->getText())?></textarea>
@@ -64,13 +58,7 @@
                             <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
                         </div>
                         <div class="input-group mb-4">
-                            <input id="name" name="name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Meno">
-                        </div>
-                        <div class="input-group mb-4">
                             <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Koľko bodov z 10?">
-                        </div>
-                        <div class="input-group mb-4">
-                            <input id="sentiment" name="sentiment" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="1 pre pozitivnu | 0 pre negatívnu">
                         </div>
                         <div class="input-group">
                             <textarea class="form-control mb-3" id="text" name="message" placeholder="Message" style="height: 7em; resize: none;"></textarea>

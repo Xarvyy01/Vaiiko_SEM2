@@ -51,7 +51,8 @@ class ReservationController extends AControllerBase
     {
         return $this->html([
             'reservations' => Reservation::getAll(),
-            'users' => User::getAll()
+            'users' => User::getAll(),
+            'authorizations' => Authorization::getAll()
         ]);
 
     }
