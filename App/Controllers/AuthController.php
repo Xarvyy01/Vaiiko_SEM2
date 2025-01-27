@@ -27,8 +27,8 @@ class AuthController extends AControllerBase
 
     public function registration(): Response
     {
-
-        return $this->html();
+        $errors = $this->request()->getValue('errors');
+        return $this->html(['error' => $errors[0]]);
 
     }
 
@@ -47,7 +47,7 @@ class AuthController extends AControllerBase
             }
         }
 
-        $data = ($logged === false ? ['message' => 'Zlý login alebo heslo!'] : []);
+        $data = ($logged === false ? ['message' => 'Zlý email alebo heslo!'] : ['message' => null]);
         return $this->html($data);
     }
 
@@ -73,23 +73,55 @@ class AuthController extends AControllerBase
         $name_second = $this->request()->getValue('name_second');
         $email = $this->request()->getValue('email');
         $password = $this->request()->getValue('password');
+        $password_repeat = $this->request()->getValue('password_repeat');
         $pass = password_hash($password, PASSWORD_BCRYPT);
 
-        $user = new User();
-        $user->setEmail($email);
-        $user->setNameFirst($name_first);
-        $user->setNameSecond($name_second);
-        $user->setPassword($pass);
+        $users = User::getAll();
+        $final_user = null;
+        $error = [];
 
-        $user->save();
 
-        $user_id = $user->getId();
-        $authorization = new Authorization();
-        $authorization->setUserId($user_id);
-        $authorization->setPermissionId(1);
-        $authorization->save();
+        if ($this->isEmailCorrect($email)) {
+            array_push($error, 'Máte zle napisaný email');
+        }
 
-        return $this->redirect($this->url("auth.login"));
+        foreach ($users as $user) {
+            if ($user->getEmail() == $email) {
+                $final_user = $user;
+                array_push($error, 'Účet s takýmto emailom už je zaregistrovaný');
+            }
+        }
+
+        if (strlen($password < 8) || (preg_match('/\d/', $password)) == 0 || (preg_match('/[A-Z]/', $password) == 0)) {
+            array_push($error, 'Heslo musí mať minimálne 8 znakov, 1 veľké písmeno, 1 číslo');
+        }
+
+        if ($password != $password_repeat) {
+            array_push($error, 'Hesla nezhodujú');
+        }
+
+        if ($final_user == null && sizeof($error) == 0) {
+
+            $user = new User();
+            $user->setEmail($email);
+            $user->setNameFirst($name_first);
+            $user->setNameSecond($name_second);
+            $user->setPassword($pass);
+
+            $user->save();
+
+            $user_id = $user->getId();
+            $authorization = new Authorization();
+            $authorization->setUserId($user_id);
+            $authorization->setPermissionId(1);
+            $authorization->save();
+
+
+            return $this->redirect($this->url("auth.login"));
+
+        }
+
+        return $this->redirect($this->url('auth.registration', ["errors" => $error]));
     }
 
     public function checkDuplicity()
@@ -107,5 +139,29 @@ class AuthController extends AControllerBase
 
         return $this->json(["ret" => $ret]);
 
+    }
+
+    public function isEmailCorrect($email_temp) : bool
+    {
+        $index = -1;
+        for ($i = 0; $i < strlen($email_temp); $i++) {
+            if ($email_temp[$i] == '.') {
+                $index = $i;
+            }
+        }
+
+        $after_email = '';
+
+        if (str_contains($email_temp,'@')) {
+            for ($i = strpos($email_temp, '@'); $i < strlen($email_temp); $i++) {
+                   $after_email = $after_email . '' . $email_temp[$i];
+            }
+        }
+
+
+        if ($after_email != '' && strpos($email_temp, '@') < $index && strlen($after_email >= 4)) {
+            return false;
+        }
+        return true;
     }
 }

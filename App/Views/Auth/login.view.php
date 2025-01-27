@@ -60,6 +60,13 @@
 
         </div>
     </div>
+    <div class="text-center p-3 ">
+        <?php
+            if ($data['message'] != null) {
+                echo '<span class="text-center">' .$data['message']. '</span>';
+            }
+        ?>
+    </div>
 </main>
 
 <script src="public/js/login_script.js"> </script>

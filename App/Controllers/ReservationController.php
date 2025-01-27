@@ -155,20 +155,26 @@ class ReservationController extends AControllerBase
 
     }
 
-    public function who() {
 
-        $data = $this->request()->getRawBodyJSON();
-        $name = $data->names;
-        $users = User::getAll();
-        $ret = false;
-        foreach ($users as $user) {
-            if ($user->getEmail() == $email) {
-                $ret = true;
+    public function getReservationCount(): int
+    {
+
+        if ($this->app->getAuth()->isLogged()) {
+
+            $reservations = Reservation::getAll();
+            $user = User::getOne($this->app->getAuth()->getLoggedUserId());
+
+            $count = 0;
+
+            foreach ($reservations as $reservation) {
+                if ($reservation->getClientId()== $user->getId()) { $count = $count + 1; }
             }
+
+            return $count;
+
         }
 
-
-        return $this->json(["ret" => $ret]);
+        return 0;
 
     }
 }

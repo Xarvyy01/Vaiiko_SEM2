@@ -51,7 +51,7 @@
                             <input id="password" name="password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Heslo">
                         </div>
                         <div class="form-label-group mb-4">
-                            <input id="password2" name="password_second" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Potvrdte Heslo">
+                            <input id="password2" name="password_repeat" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Potvrdte Heslo">
                         </div>
                         <div class="form-label-group mb-5 d-flex justify-content-between">
                         </div>
@@ -64,6 +64,13 @@
             </div>
 
         </div>
+    </div>
+    <div class="text-center p-3 ">
+        <?php
+        if ($data['error'] != null) {
+                echo '<span class="text-center">' .$data['error']. '</span>';
+        }
+        ?>
     </div>
 </main>
 
