@@ -117,7 +117,7 @@ class ReservationController extends AControllerBase
         $reservation = new Reservation();
         $timeFrom = $this->request()->getValue('timeFrom');
 
-        $error1 = '';
+        $errors = [];
         $error2 = '';
 
         $date = $this->request()->getValue('date');
@@ -126,7 +126,7 @@ class ReservationController extends AControllerBase
             $reservation->setTimeFrom($timeFrom);
         } else {
             $boolean = true;
-            $error1 = 'Čas musí byť vo forme takejto 15.0 alebo 15.5';
+            array_push($errors, 'Musí byť číslo vo formáte napríklad 12:30');
         }
 
 
@@ -134,7 +134,7 @@ class ReservationController extends AControllerBase
             $reservation->setDate($date);
         } else {
             $boolean = true;
-            $error2 = 'Dátum musí byť vo forme YYMMDD priklad: 20250110';
+            array_push($errors, 'Dátum musí byť vo forme YYMMDD priklad: 20250110');
         }
 
         if ($boolean == false) {
@@ -142,7 +142,7 @@ class ReservationController extends AControllerBase
             return  $this->redirect($this->url('reservation.index'));
         }
 
-        return $this->redirect($this->url('reservation.addReservation', ["err1" => $error1, "err2" => $error2]));
+        return $this->redirect($this->url('reservation.addReservation', ["errors" => $errors]));
 
     }
 

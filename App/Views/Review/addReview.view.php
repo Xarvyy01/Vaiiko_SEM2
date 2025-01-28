@@ -74,18 +74,14 @@
                         </div>
                     </div>
                 </div>
-
              </div>
             </form>
         <?php endif; ?>
-
-
-
     </div>
 
     <div class="text-center">
-        <?php if ($data['ret'] != null) {
-            echo '<p>"' . $data['ret'] . '"</p>';
+        <?php if ($data['errors'] != null) {
+            echo '<p>"' . $data['errors'][0] . '"</p>';
         }
         ?>
     </div>

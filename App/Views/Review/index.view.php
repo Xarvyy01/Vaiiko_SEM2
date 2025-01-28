@@ -48,6 +48,7 @@
 
                         ?>
                         <?php
+
                         $dateString = $review->getDate();
                         $year = substr($dateString, 0, 4);
                         $month = substr($dateString, 4, 2);

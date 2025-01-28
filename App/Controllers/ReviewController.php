@@ -55,19 +55,19 @@ class ReviewController extends AControllerBase
     public function addReview() : Response
     {
         $id = $this->request()->getValue('id');
-        $ret = $this->request()->getValue('ret');
+        $errors = $this->request()->getValue('errors');
 
 
         if ($id == null) {
             return $this->html([
-                'ret' => $ret,
+                'errors' => $errors,
                 'review' => null
             ]);
         } else {
             $review = Review::getOne($id);
             return $this->html([
                 'review' => $review,
-                'ret' => $ret
+                'errors' => $errors
             ]);
         }
 
@@ -83,10 +83,12 @@ class ReviewController extends AControllerBase
 
     public function save(): Response
     {
-        $array = '';
+
         $name = $this->request()->getValue('name');
         $rating = $this->request()->getValue('rating');
         $messaage = $this->request()->getValue('message');
+
+        $errors = [];
 
         $review = new Review();
 
@@ -95,8 +97,8 @@ class ReviewController extends AControllerBase
         if (is_numeric($rating) && ($rating >= 0 && $rating <= 10)) {
             $review->setRating($rating);
         } else {
-            $array = 'Zlé hodnotenie číslo musí byť od 1 až po 10';
-            return $this->redirect($this->url("review.addReview", ["ret" => $array]));
+            array_push($errors,'Zlé hodnotenie číslo musí byť od 1 až po 10');
+            return $this->redirect($this->url("review.addReview", ["errors" => $errors]));
         }
 
 

@@ -1,40 +1,26 @@
 document.getElementById('login_button').addEventListener('click', function (event) {
 
-
-
-    let name = document.getElementById('name').value;
     let rating = document.getElementById('rating').value;
-    let sentiment =  document.getElementById('sentiment').value;
     let text =  document.getElementById('text').value;
 
     let isNum = 0
 
-    let error1 = " ";
-    let error2 = " ";
-    let error3 = " ";
-    let error4 = " ";
+    let errors = [];
+
 
     let numbers = "0123456789"
 
-    if (!isNumber(name) || name == "") {
-        error1 = "Meno musí byť číslo";
-    }
 
     if (!isNumber(rating) || rating == "") {
-        error2 = "Hodnotenie musí byť číslo";
+        errors.push("Hodnotenie musí byť číslo");
     }
 
     let num = Number(rating);
 
     if (!(num >= 0 && num <= 10) || rating === "") {
-        error3 = "Hodnotenie musí byť od 0 až po 10";
+        errors.push("Hodnotenie musí byť od 0 až po 10");
     }
 
-    num = Number(sentiment);
-
-    if (!isNumber(sentiment) || !(num >= 0 && num <= 1) || sentiment == "") {
-        error4 = "Hodnotenie musí byť číslo 0 alebo 1";
-    }
 
     function isNumber(number) {
 
@@ -54,8 +40,8 @@ document.getElementById('login_button').addEventListener('click', function (even
         return true
     }
 
-    if (error1 != " " || error2 != " " || error3 != " " || error4 != " ") {
-        alert(error1 + "\n" + error2 + "\n" + error3 + "\n" + error4)
+    if (errors.length > 0) {
+        alert(errors[0]);
         event.preventDefault();
     }
 

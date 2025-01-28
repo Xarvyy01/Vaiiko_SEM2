@@ -48,34 +48,27 @@ document.getElementById('register_button').addEventListener('click', function (e
         }
     }
 
-    let string1 = '';
-    let string2 = '';
-    let string3 = '';
-    let string4 = '';
+    let errors = [];
 
 
-    if (passwordLength < 8 && bool != 1)  {
-        string2 = 'Heslo neobsahuje 8 znakov, alebo žiadny špecialný znak';
-    }
 
     if (position_symbol1 == 0 || position_symbol2 == 0 || position_symbol2 < position_symbol1) {
 
-        string1 = 'Zle napisaný email, prosím Vás opravte si ho';
+        errors.push('Zle napisaný email, prosím Vás opravte si ho')
 
     }
     if (name_first == '' || name_second == '') {
 
-        string4 = 'Vyplnte celé meno';
+        errors.push('Vyplnte celé meno')
 
     }
 
     if(password != password2) {
-        string3 = 'Hesla sa nezhodujú';
+        errors.push('Hesla sa nezhodujú')
     }
 
-    if (string2 != '' || string1 != '' || string3 != '' || string4 != '') {
-        let string = string1 + '\n' + string2 + '\n' + string4 + '\n' + string3;
-        alert(string);
+    if (errors.length > 0) {
+        alert(errors[0]);
         event.preventDefault();
     }
 

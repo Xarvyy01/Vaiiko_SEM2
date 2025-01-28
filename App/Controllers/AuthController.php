@@ -27,7 +27,13 @@ class AuthController extends AControllerBase
 
     public function registration(): Response
     {
+        $errors = [];
         $errors = $this->request()->getValue('errors');
+
+        if ($errors == null) {
+            return $this->html(['error' => null]);
+        }
+
         return $this->html(['error' => $errors[0]]);
 
     }
