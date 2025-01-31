@@ -58,11 +58,8 @@
         </div>
     </div>
     <div class="text-center">
-        <?php if ($data['err1'] != null) {
-            echo '<p>"' . $data['err1'] . '"</p>';
-        }
-        if ($data['err2'] != null) {
-            echo '<p>"' . $data['err2'] . '"</p>';
+        <?php if ($data['errors'] != null) {
+            echo '<p>"' . $data['errors'][0] . '"</p>';
         }
         ?>
     </div>

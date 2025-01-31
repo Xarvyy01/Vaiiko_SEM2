@@ -41,44 +41,17 @@
 
                         $timeString = $reservation->getTimeFrom();
 
-                        if (strpos($timeString, '.') !== false) {
-
-                            list($hours, $minutes) = explode('.', $timeString);
 
 
-                            $minutes = intval($minutes);
-                            if ($minutes == 5) {
-                                $minutes = 30;
-                            } elseif ($minutes == 25) {
-                                $minutes = 15;
-                            } elseif ($minutes == 75) {
-                                $minutes = 45;
-                            } else {
-                                $minutes = 0;
-                            }
-                        } else {
-
-                            $hours = intval($timeString);
-                            $minutes = 0;
-                        }
-
-
-                        $time = sprintf('%02d:%02d', $hours, $minutes);
-
-                        echo '<strong class="text-center">' .$time. '</strong>';
+                        echo '<strong class="text-center">' .$timeString. '</strong>';
 
                         ?>
 
                         <?php
 
                             $dateString = $reservation->getDate();
-                            $year = substr($dateString, 0, 4);
-                            $month = substr($dateString, 4, 2);
-                            $day = substr($dateString, 6, 2);
 
-
-                            $formattedDate = $day . '.' . $month . '.' . $year;
-                            echo '<strong class="text-center">' . $formattedDate . '</strong>';
+                            echo '<strong class="text-center">' . $dateString . '</strong>';
 
                         ?>
 

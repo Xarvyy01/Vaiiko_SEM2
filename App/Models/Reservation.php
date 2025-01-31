@@ -8,8 +8,8 @@ class Reservation extends Model
 {
 
     protected ?int $id;
-    protected ?int $date = null;
-    protected ?float $time_from = null;
+    protected ?string $date = null;
+    protected ?string $time_from = null;
     protected ?int $client_id = null;
 
     public function getId(): ?int
@@ -22,22 +22,22 @@ class Reservation extends Model
         $this->id = $id;
     }
 
-    public function getDate(): ?int
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(?int $date): void
+    public function setDate(?string $date): void
     {
         $this->date = $date;
     }
 
-    public function getTimeFrom(): ?float
+    public function getTimeFrom(): ?string
     {
         return $this->time_from;
     }
 
-    public function setTimeFrom(?float $time_from): void
+    public function setTimeFrom(?string $time_from): void
     {
         $this->time_from = $time_from;
     }

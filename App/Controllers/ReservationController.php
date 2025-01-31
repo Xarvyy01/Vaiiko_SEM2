@@ -59,20 +59,10 @@ class ReservationController extends AControllerBase
 
     public function addReservation(): Response
     {
-        $err1 = $this->request()->getValue('err1');
-        $err2 = $this->request()->getValue('err2');
+        $errors = $this->request()->getValue('errors');
 
-        if ($err1 != null || $err2 != null) {
-            return $this->html([
-                'err1' => $err1,
-                'err2' => $err2
-            ]);
-        } else {
-            return $this->html([
-                'err1' => null,
-                'err2' => null
-            ]);
-        }
+        return $this->html(['errors' => $errors]);
+
 
     }
 
@@ -113,31 +103,52 @@ class ReservationController extends AControllerBase
 
     public function add(): Response
     {
-        $boolean = false;
         $reservation = new Reservation();
-        $timeFrom = $this->request()->getValue('timeFrom');
 
         $errors = [];
-        $error2 = '';
 
+        $timeFrom = $this->request()->getValue('timeFrom');
         $date = $this->request()->getValue('date');
 
-        if (is_numeric($timeFrom)) {
+        $firstHalf = '';
+        $secondHalf = '';
+        $thirdhalf = '';
+        $switch = 0;
+
+        if (strpos($timeFrom, ':')) {
+
+            for ($i = 0; $i < strlen($timeFrom); $i++) {
+
+                if ($timeFrom[$i] == ':') {
+                    $switch = 1;
+                } else {
+                    if ($switch == 0) {
+                        $firstHalf = $firstHalf . $timeFrom[$i];
+                    } else {
+                        $secondHalf = $secondHalf . $timeFrom[$i];
+                    }
+                }
+
+            }
+
+        }
+
+        if (strlen($firstHalf) == 2 && strlen($secondHalf) == 2 && is_numeric($firstHalf) && is_numeric($secondHalf) && (int) $firstHalf >= 0 && (int) $firstHalf <= 23 && (int) $firstHalf >= 0 && (int) $firstHalf <= 59)
+        {
             $reservation->setTimeFrom($timeFrom);
         } else {
-            $boolean = true;
-            array_push($errors, 'Musí byť číslo vo formáte napríklad 12:30');
+            array_push($errors , "Zle naformatovaný čas | príklad => 12:30");
         }
 
+        $parts = explode('.', $date);
 
-        if (strlen($date) == 8 && ctype_digit($date)) {
+        if ((int) $parts[0] >= 1 && (int) $parts[0] <= 31 && (int) $parts[1] >= 1 && (int) $parts[1] <= 12 && (int) $parts[2] == 2025 && is_numeric($parts[0]) && is_numeric($parts[1]) && is_numeric($parts[2])) {
             $reservation->setDate($date);
         } else {
-            $boolean = true;
-            array_push($errors, 'Dátum musí byť vo forme YYMMDD priklad: 20250110');
+            array_push($errors , "Zle naformatovaný dátum | príklad => 13.2.2025");
         }
 
-        if ($boolean == false) {
+        if (sizeof($errors) == 0) {
             $reservation->save();
             return  $this->redirect($this->url('reservation.index'));
         }
