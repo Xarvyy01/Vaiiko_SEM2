@@ -37,9 +37,9 @@
                         <h2>Prihlásiť Sa</h2>
                         <p>Prihlás sa, a objednaj sa na strihanie</p>
                     </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
+                    <form class="form-signin" id="myForm" method="post" action="<?= $link->url("login") ?>">
                         <div class="form-label-group mb-3">
-                            <input name="login" type="text" id="email" class="form-control" placeholder="Login"
+                            <input name="login" type="text" id="login" class="form-control" placeholder="Login"
                                    required autofocus>
                         </div>
 

@@ -36,7 +36,7 @@
                         <h2>Registrovať Sa</h2>
                         <p>Registruj sa, a získaj výhody</p>
                     </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("register") ?>">
+                    <form class="form-signin" id="myForm" method="post" action="<?= $link->url("register") ?>">
 
                         <div class="form-label-group mb-4">
                             <input id="email" type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Emailová Adresa">

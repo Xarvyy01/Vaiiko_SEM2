@@ -170,4 +170,28 @@ class AuthController extends AControllerBase
         }
         return true;
     }
+
+    public function checkDuplicityUsers(): \App\Core\Responses\JsonResponse
+    {
+        $data = $this->request()->getRawBodyJSON();
+        $email = $data->email;
+
+        $users = User::getAll();
+        $ret = true;
+
+        if (is_object($data) && property_exists($data, 'email')) {
+
+            foreach ($users as $user) {
+
+                if ($user->getEmail() == $email) {
+                    $ret = false;
+                }
+
+            }
+
+        }
+
+        return $this->json(["ret" => $ret]);
+
+    }
 }
