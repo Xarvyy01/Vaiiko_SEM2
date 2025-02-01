@@ -41,7 +41,7 @@
                     </div>
                     <div id="gallery" class="gallery"></div>
                 </div>
-                <a class="btn btn-lg btn-dark w-100 fs-6" type="submit" name="submit" href=""><small>Potvrdiť</small></a>
+                <a class="btn btn-lg btn-dark w-100 fs-6" type="submit" name="submit" id="button" href=""><small>Potvrdiť</small></a>
             </div>
 
         </div>

@@ -1,6 +1,6 @@
 var dropArea = document.getElementById('drop');
 var gallery = document.getElementById('gallery');
-
+var src = '';
 
 dropArea.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -25,7 +25,8 @@ function handleFiles(files) {
             reader.onload = (event) => {
                 const img = document.createElement('img');
                 img.src = event.target.result;
-                changeProfilePicture(img.src);
+                src = img.src;
+ //               changeProfilePicture(img.src);
                 img.style.display = "block";
                 img.style.margin = "auto";
                 if (gallery.firstChild) {
@@ -41,8 +42,7 @@ function handleFiles(files) {
     });
 }
 
-
-async function changeProfilePicture(src) {
+document.getElementById('button').addEventListener('click', async function (event) {
 
     let url = "http://127.0.0.1//?c=profile&a=changePicture";
     let body = {
@@ -75,6 +75,8 @@ async function changeProfilePicture(src) {
     } catch (error) {
         console.error("Nastala chyba:", error);
     }
-}
+
+})
+
 
 

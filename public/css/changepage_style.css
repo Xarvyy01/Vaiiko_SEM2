@@ -23,10 +23,9 @@
     border-radius: 5px;
 }
 
-.gallery {
+#gallery {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    border: 1px solid black;
+
 }
