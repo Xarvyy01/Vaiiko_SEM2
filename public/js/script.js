@@ -26,7 +26,13 @@ function handleFiles(files) {
                 const img = document.createElement('img');
                 img.src = event.target.result;
                 changeProfilePicture(img.src);
-                gallery.appendChild(img);
+                img.style.display = "block";
+                img.style.margin = "auto";
+                if (gallery.firstChild) {
+                    gallery.replaceChild(img, gallery.firstChild);
+                } else {
+                    gallery.appendChild(img);
+                }
             };
             reader.readAsDataURL(file);
         } else {

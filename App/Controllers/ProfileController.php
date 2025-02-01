@@ -69,7 +69,6 @@ class ProfileController extends AControllerBase
             return $this->json('true');
         }
 
-
         return $this->json('false');
 
     }

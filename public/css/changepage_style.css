@@ -14,11 +14,6 @@
     background-color: #f0f0f0;
 }
 
-#gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
 
 #gallery img {
     max-width: 200px;
@@ -26,4 +21,12 @@
     object-fit: cover;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    border: 1px solid black;
 }
