@@ -17,7 +17,7 @@ class ReviewController extends AControllerBase
 
             case "add_review":
             case "save": {
-                if ($this->app->getAuth()->isLogged()) {
+                if ($this->app->getAuth()->isLogged() && $this->hasUserReview($this->app->getAuth()->getLoggedUserId()) == false) {
                     return true;
                 }
                 return false;
@@ -138,6 +138,21 @@ class ReviewController extends AControllerBase
 
         return $this->redirect($this->url("review.addReview", ["id" => $id]));
 
+    }
+
+    public function hasUserReview($userId) : bool
+    {
+
+        $reviews = Review::getAll();
+
+        foreach ($reviews as $review) {
+            if ($review->getClientId() == $userId) {
+                return true;
+            }
+        }
+
+
+        return false;
     }
 }
 
