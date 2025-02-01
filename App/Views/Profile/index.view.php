@@ -49,7 +49,7 @@
                         <p><strong>Identifikačné číslo:</strong> <span><?= $data["id"] ?></span></p>
                     </div>
                     <div class="d-grid mb-0">
-                        <a class="btn btn-lg btn-dark w-100 fs-6" href="<?= $link->url("auth.registration") ?>">
+                        <a class="btn btn-lg btn-dark w-100 fs-6" href="<?= $link->url("profile.change") ?>">
                             <small>Zmeniť fotku</small>
                         </a>
                     </div>
