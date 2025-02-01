@@ -1,0 +1,7 @@
+.pic {
+    max-width: 100%; /* Obrázok nebude väčší ako priestor */
+    height: auto; /* Zachová pomer strán */
+    display: block; /* Zarovnávanie bez pretekania */
+    margin: auto; /* Stred obrázku, ak je potrebné */
+    border-radius: 15px; /* Nastavenie zaoblenia hrán */
+}

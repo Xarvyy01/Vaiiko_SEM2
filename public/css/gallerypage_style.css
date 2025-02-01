@@ -5,6 +5,8 @@ body {
 
 .pic {
     border-radius: 20px;
+    float: right;
+    margin-left: 10px;
 }
 
 .margin {
