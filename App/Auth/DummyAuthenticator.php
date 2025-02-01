@@ -43,14 +43,14 @@ class DummyAuthenticator implements IAuthenticator
             }
         }
 
-        if ($final_user == null) { echo "<p style='color: red;'>Nesprávny e-mail alebo Heslo!</p>"; }
-        else {
+        if ($final_user != null) {
             if (password_verify($password, $final_user->getPassword())) {
                 $_SESSION['user'] = $final_user->getId();
                 $test =$this->isLogged();
                 return true;
             }
         }
+
         return false;
     }
 
