@@ -67,7 +67,7 @@ document.getElementById('register_button').addEventListener('click', async funct
     }
 
     event.preventDefault();
-    let form = document.getElementById('myForm')
+    let form = document.getElementById('myForm');
 
     let url = "http://127.0.0.1//?c=auth&a=checkDuplicityUsers";
     let body = {
