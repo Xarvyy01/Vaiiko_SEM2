@@ -130,6 +130,18 @@ class AuthController extends AControllerBase
         return $this->redirect($this->url('auth.registration', ["errors" => $error]));
     }
 
+    public function delete(): Response
+    {
+
+        $id = $this->request()->getValue("id");
+
+        $user = User::getOne($id);
+        $user->delete();
+
+        return $this->redirect($this->url('admin.index'));
+
+    }
+
     public function checkDuplicity()
     {
         $data = $this->request()->getRawBodyJSON();

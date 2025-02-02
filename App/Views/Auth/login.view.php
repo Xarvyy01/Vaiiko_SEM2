@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="input-group mb-3">
-                        <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.registration") ?>"><small>Registrácia</small></a>
+                        <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.registration")?>"><small>Registrácia</small></a>
                     </div>
                 </div>
             </div>

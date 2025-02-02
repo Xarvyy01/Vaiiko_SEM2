@@ -1,0 +1,26 @@
+.custom-table {
+    border-collapse: separate !important; /* aby sa zachovali rohy */
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    /* prípadne celkový okraj tabuľky, ak ho chcete:
+       border: 1px solid #000;
+    */
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #000; /* čierna farba oddelovacích čiar */
+}
+.custom-table-head {
+    background-color: #a67c52;
+    color: #fff;
+}
+
+.contact-form {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -4,11 +4,29 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Authorization;
 use App\Models\Picture;
 use App\Models\User;
 
 class ProfileController extends AControllerBase
 {
+
+    public function authorize(string $action)
+    {
+        switch ($action) {
+
+            case "index":
+            case "changePicture";
+            case "change": {
+                if ($this->app->getAuth()->isLogged()) {
+                            return true;
+                }
+
+            }
+            default: { return false; }
+
+        }
+    }
 
     public function index(): Response
     {

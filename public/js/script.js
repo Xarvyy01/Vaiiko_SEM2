@@ -26,7 +26,6 @@ function handleFiles(files) {
                 const img = document.createElement('img');
                 img.src = event.target.result;
                 src = img.src;
- //               changeProfilePicture(img.src);
                 img.style.display = "block";
                 img.style.margin = "auto";
                 if (gallery.firstChild) {
@@ -64,7 +63,7 @@ document.getElementById('button').addEventListener('click', async function (even
             const ret = data["ret"];
             if (ret === true) {
                 alert("Karol gay");
-                event.preventDefault(); // Zrušte predvolené akcie, ak sú chyby
+                event.preventDefault();
             } else {
                 alert("Email je už zaregistrovaný.");
                 document.forms[0].submit();
