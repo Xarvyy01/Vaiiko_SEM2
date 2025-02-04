@@ -21,39 +21,55 @@
 <body>
 
 
-<section class="hv-100 bg-transparent d-flex justify-content-center align-items-center p-4" id="section">
-    <div class="row contact-form position-relative d-flex justify-content-cente" id="container">
-        <div class="table-responsive text-center">
-            <table class="table table-striped table-hover table-bordered table-sm custom-table">
-                <thead class="custom-table-head">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Meno</th>
-                    <th scope="col">Priezvisko</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Funkcie</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $count = 0; ?>
-                <?php foreach ($data['users'] as $user) : ?>
+<section class="bg-transparent p-4" id="section">
+    <!-- .container – základný Bootstrap kontajner s postrannými odsadením -->
+    <div class="container">
+        <!-- .row – riadok gridu -->
+        <div class="row">
+            <!-- .col-12 – stĺpec, ktorý bude mať 100% šírku na všetkých zariadeniach.
+                 Môžete kombinovať s offsetmi alebo inými breakpointmi (napr. col-md-8 offset-md-2) -->
+            <div class="col-12 contact-form" id="container">
+                <!-- .table-responsive – zaistí horizontálny scrollbar, ak by bola tabuľka široká -->
+                <div class="table-responsive text-center">
+                    <!-- Vlastné triedy: .custom-table, .table, .table-bordered, .table-hover, atď. -->
+                    <table class="table table-striped table-hover table-bordered table-sm custom-table">
+                        <thead class="custom-table-head">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Meno</th>
+                            <th scope="col">Priezvisko</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Funkcie</th>
+                        </tr>
+                        </thead>
 
-                    <tr>
-                        <th scope="row"><?= $count ?></th>
-                        <td><?= $user->getId() ?></td>
-                        <td><?= $user->getNameFirst() ?></td>
-                        <td><?= $user->getNameSecond() ?></td>
-                        <td><?= $user->getEmail() ?></td>
-                        <td> <a class="btn btn-lg btn-light w-100 fs-6" type="submit" name="submit" href="<?= $link->url("auth.delete" , ['id' => $user->getId()]) ?>"><small>Vymazať</small></a></td>
-                    </tr>
-                    <?= $count = $count + 1 ?>;
-                <?php endforeach; ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
+                        <tbody>
+                        <!-- Príklad generovania riadkov v PHP: -->
+                        <?php $count = 0; ?>
+                        <?php foreach ($data['users'] as $user) : ?>
+                            <tr>
+                                <!-- miesto `<?= $count = $count + 1 ?>;` použite napr. -->
+                                <th scope="row"><?= ++$count ?></th>
+                                <td><?= $user->getId() ?></td>
+                                <td><?= $user->getNameFirst() ?></td>
+                                <td><?= $user->getNameSecond() ?></td>
+                                <td><?= $user->getEmail() ?></td>
+                                <td>
+                                    <!-- Tlačidlo, napr. na vymazanie, with link generator -->
+                                    <a class="btn btn-lg btn-light w-100 fs-6"
+                                       href="<?= $link->url("auth.delete", ['id' => $user->getId()]) ?>">
+                                        <small>Vymazať</small>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div> <!-- .table-responsive -->
+            </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+    </div> <!-- .container -->
 </section>
 
 

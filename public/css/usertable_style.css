@@ -18,9 +18,20 @@
 }
 
 .contact-form {
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    margin: 0 auto;
+    padding: 2rem 1rem; /* aby mala tabuľka okolo seba priestor */
 }
+
+/* Len od stredných (alebo väčších) obrazoviek môžeme zachovať "flex" centrovanie */
+@media (min-width: 768px) {
+    .contact-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+    }
+}
+
+
 

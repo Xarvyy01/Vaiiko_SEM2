@@ -45,7 +45,13 @@
                         <a class="nav-link mx-lg-2" href="<?= $link->url("home.contact") ?>">Kontakt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="<?= $link->url("auth.login") ?>">Prihlasenie</a>
+                        <?php
+                        if ($auth->isLogged() == false) {
+                            echo '<li class="nav-item">  
+                               <a class="nav-link mx-lg-2" href="' . $link->url("auth.login") . '">Prihlasenie</a>
+                                </li>';
+                        }
+                        ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="<?= $link->url("home.gallery") ?>">Galeria</a>
@@ -81,6 +87,14 @@
                     if ($auth->isLogged()) {
                         echo '<li class="nav-item">  
                                <a class="nav-link mx-lg-2" href="' . $link->url("auth.logout") . '">Odhlásiť</a>  
+                                </li>';
+                    }
+                    ?>
+
+                    <?php
+                    if ($auth->isLogged()) {
+                        echo '<li class="nav-item">  
+                               <a class="nav-link mx-lg-2" href="' . $link->url("profile.index") . '">Profil</a>  
                                 </li>';
                     }
                     ?>

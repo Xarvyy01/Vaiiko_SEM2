@@ -6,6 +6,9 @@ use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
+use App\Models\Picture;
+use App\Models\Reservation;
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Authorization;
 
@@ -69,7 +72,7 @@ class AuthController extends AControllerBase
     public function logout(): Response
     {
         $this->app->getAuth()->logout();
-        return $this->html();
+        return $this->redirect($this->url('home.index'));
     }
 
     public function register(): Response
@@ -134,6 +137,37 @@ class AuthController extends AControllerBase
     {
 
         $id = $this->request()->getValue("id");
+
+
+
+        $authorisations = Authorization::getAll();
+        $reviews = Review::getAll();
+        $reservations = Reservation::getAll();
+        $pictures = Picture::getAll();
+
+        foreach ($authorisations as $authorisation) {
+            if ($authorisation->getUserId() == $id) {
+                $authorisation->delete();
+            }
+        }
+
+        foreach ($reviews as $review) {
+            if ($review->getClientId() == $id) {
+                $authorisation->delete();
+            }
+        }
+
+        foreach ($reservations as $reservation) {
+            if ($reservation->getClientId() == $id) {
+                $authorisation->delete();
+            }
+        }
+
+        foreach ($pictures as $picture) {
+            if ($picture->getUserId() == $id) {
+                $picture->delete();
+            }
+        }
 
         $user = User::getOne($id);
         $user->delete();

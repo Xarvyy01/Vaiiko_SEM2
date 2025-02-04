@@ -49,10 +49,12 @@ class ReservationController extends AControllerBase
 
     public function index(): Response
     {
+        $errors = $this->request()->getValue('errors');
         return $this->html([
             'reservations' => Reservation::getAll(),
             'users' => User::getAll(),
-            'authorizations' => Authorization::getAll()
+            'authorizations' => Authorization::getAll(),
+            'errors' => $errors
         ]);
 
     }
@@ -79,13 +81,29 @@ class ReservationController extends AControllerBase
     public function reserve(): Response
     {
 
-        $id = $this->request()->getValue('id');
-        $reservation = Reservation::getOne($id);
-        $client_id = $this->app->getAuth()->getLoggedUserId();
-        $reservation->setClientId($client_id);
-        $reservation->save();
+        $reservations = Reservation::getAll();
+        $count = 0;
+        $errors = [];
 
-        return  $this->redirect($this->url('reservation.index'));
+        foreach ($reservations as $reservation_temp) {
+            if ($reservation_temp->getClientId() == $this->app->getAuth()->getLoggedUserId()) {
+                $count = 1;
+            }
+        }
+
+        if ($count == 0) {
+            $id = $this->request()->getValue('id');
+            $reservation = Reservation::getOne($id);
+            $client_id = $this->app->getAuth()->getLoggedUserId();
+            $reservation->setClientId($client_id);
+            $reservation->save();
+        } else {
+            array_push($errors, 'Už máte rezervovaný termín');
+        }
+
+
+
+        return  $this->redirect($this->url('reservation.index', ['errors' => $errors]));
 
     }
 

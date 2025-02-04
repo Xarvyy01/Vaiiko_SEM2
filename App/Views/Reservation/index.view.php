@@ -28,6 +28,13 @@
 
 <section id="testimonials">
 
+    <div class="text-center">
+        <?php if ($data['errors'] != null) {
+            echo '<p>' . $data['errors'][0] . '</p>';
+        }
+        ?>
+    </div>
+
     <div class="testimonial-box-container">
 
     <?php foreach ($data['reservations'] as $reservation) : ?>
