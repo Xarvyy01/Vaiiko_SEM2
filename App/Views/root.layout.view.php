@@ -99,6 +99,19 @@
                     }
                     ?>
 
+                    <?php
+                    if ($auth->isLogged()) {
+                        $authorizations = \App\Models\Authorization::getAll();
+                        foreach ($authorizations as $authorization) {
+                            if ($authorization->getUserId() == $auth->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                                echo '<li class="nav-item">
+                                            <a class="nav-link mx-lg-2" href="'. $link->url("admin.index") .'">Admin</a>
+                                            </li>';
+                            }
+                        }
+                    }
+                    ?>
+
                 </ul>
 
             </div>

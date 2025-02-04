@@ -89,11 +89,7 @@
 
                 <?php
                 if ($reservation->getClientId() == null) {
-
-
                         echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.reserve", ["id" => $reservation->getId()]) . '">Rezervovať</a>';
-
-
                 } else {
 
                     if ($auth->isLogged()) {

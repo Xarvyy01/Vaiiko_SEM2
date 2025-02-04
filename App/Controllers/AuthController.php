@@ -159,7 +159,8 @@ class AuthController extends AControllerBase
 
         foreach ($reservations as $reservation) {
             if ($reservation->getClientId() == $id) {
-                $authorisation->delete();
+                $reservation->setClientId(null);
+                $reservation->save();
             }
         }
 

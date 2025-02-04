@@ -20,7 +20,15 @@ class AdminController extends AControllerBase
      */
     public function authorize($action)
     {
-        return true;
+        if ($this->app->getAuth()->isLogged()) {
+            $authorizations = \App\Models\Authorization::getAll();
+            foreach ($authorizations as $authorization) {
+                if ($authorization->getUserId() == $this->app->getAuth()->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
