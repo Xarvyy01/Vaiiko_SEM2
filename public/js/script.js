@@ -62,10 +62,10 @@ document.getElementById('button').addEventListener('click', async function (even
             const data = await response.json();
             const ret = data["ret"];
             if (ret === true) {
-                alert("Karol gay");
+                alert("Nastala chyba");
                 event.preventDefault();
             } else {
-                alert("Email je už zaregistrovaný.");
+                alert("Profilova fotka bola aktualizovaná");
                 document.forms[0].submit();
             }
         } else {
