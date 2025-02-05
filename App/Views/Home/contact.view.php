@@ -14,6 +14,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/contactpage_style.css">
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "4h60vMsj0Bw1W_oGP",
+            });
+        })();
+    </script>
+    <script src="public/js/sendEmail.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -51,7 +62,7 @@
                     <label for="textarea">Správa...</label>
                 </div>
                 <div class="d-grid gap-2">
-                    <button id="send_button" class="btn btn-dark">Poslať</button>
+                    <button id="send_button" onclick="sendMail()" class="btn btn-dark">Poslať</button>
                 </div>
             </form>
         </div>
