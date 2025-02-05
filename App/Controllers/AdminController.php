@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\User;
+use App\Models\Authorization;
 
 /**
  * Class HomeController
@@ -21,7 +22,7 @@ class AdminController extends AControllerBase
     public function authorize($action)
     {
         if ($this->app->getAuth()->isLogged()) {
-            $authorizations = \App\Models\Authorization::getAll();
+            $authorizations = Authorization::getAll();
             foreach ($authorizations as $authorization) {
                 if ($authorization->getUserId() == $this->app->getAuth()->getLoggedUserId() && $authorization->getPermissionId() == "4") {
                     return true;
