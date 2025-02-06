@@ -29,7 +29,7 @@ Framework ma v adresári `<root>/docker` základnú konfiguráciu pre spustenie 
 
 Inštalácia PHPStorm:
 
-1. Otvorte prehliadač a prejdite na stránku 👉 PHPStorm - JetBrains
+1. Otvorte prehliadač a prejdite na stránku -> PHPStorm - JetBrains
 2. Kliknite na tlačidlo Download (stiahnuť).
 3. Vyberte verziu pre váš operačný systém (Windows, macOS, Linux).
 4. Po stiahnutí spustite inštalačný súbor a postupujte podľa pokynov inštalátora.
@@ -37,7 +37,7 @@ Inštalácia PHPStorm:
 
 Inštalácia Dockeru:
 
-1. Otvorte prehliadač a prejdite na 👉 Docker - oficiálna stránka
+1. Otvorte prehliadač a prejdite na -> Docker - oficiálna stránka
 2. Kliknite na tlačidlo Download (stiahnuť).
 3. Vyberte verziu pre váš operačný systém:
 4. Windows: Stiahnite a nainštalujte Docker Desktop for Windows.
