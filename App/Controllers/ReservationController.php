@@ -31,6 +31,7 @@ class ReservationController extends AControllerBase
                 return false;
             }
             case "add":
+            case "addReservation":
             case "delete": {
                 if ($this->app->getAuth()->isLogged()) {
                     $authorizations = Authorization::getAll();

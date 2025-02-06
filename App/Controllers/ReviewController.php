@@ -27,7 +27,11 @@ class ReviewController extends AControllerBase
                 }
                 return false;
             }
-            case "delete":
+            case "delete": {
+                if (($this->app->getAuth()->isPermission("admin"))) {
+                    return true;
+                }
+            }
             case "redirectEdit": {
                 if ($this->app->getAuth()->isLogged()) {
 
@@ -50,10 +54,18 @@ class ReviewController extends AControllerBase
 
     public function index(): Response
     {
+        $review = null;
+        $count = null;
+        if ($this->app->getAuth()->isLogged()) {
+            $review = Review::getAll("client_id=?", [$this->app->getAuth()->getLoggedUserId()]);
+            $count = sizeof($review);
+        }
+
         return $this->html([
             'reviews' => Review::getAll(),
             'users' => User::getAll(),
             'authorizations' => Authorization::getAll(),
+            'count' => $count
         ]);
     }
 

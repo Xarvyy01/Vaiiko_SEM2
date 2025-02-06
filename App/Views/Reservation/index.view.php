@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="public/css/loginpage_style.css">
     <link rel="stylesheet" href="public/css/reviewpage_style.css">
     <link rel="stylesheet" href="public/css/fixedbutton.css">
+    <link rel="stylesheet" href="public/css/error.css">
 </head>
 <body>
 
@@ -31,7 +32,7 @@
 
     <div class="text-center">
         <?php if ($data['errors'] != null) {
-            echo '<p>' . $data['errors'][0] . '</p>';
+            echo '<p class="text-center">' . $data['errors'][0] . '</p>';
         }
         ?>
     </div>
@@ -46,38 +47,25 @@
                 <div class="profile">
                     <div class="name-user">
                         <?php
-
-                        $timeString = $reservation->getTimeFrom();
-
-
-
-                        echo '<strong class="text-center">' .$timeString. '</strong>';
-
+                        echo '<strong class="text-center">' .$reservation->getTimeFrom(). '</strong>';
                         ?>
 
                         <?php
-
-                            $dateString = $reservation->getDate();
-
-                            echo '<strong class="text-center">' . $dateString . '</strong>';
-
+                            echo '<strong class="text-center">' . $reservation->getDate() . '</strong>';
                         ?>
 
                         <?php
-
                             if($reservation->getClientId() != null) {
                                 foreach ($data['users'] as $user)
                                 {
                                     if ($user->getId() == $reservation->getClientId()) {
-                                        $userFirstName = $user->getNameFirst();
-                                        $userSecondName = $user->getNameSecond();
+                                        echo '<span class="text-center text-white">' .$user->getNameFirst(). ' ' .$user->getNameSecond(). '</span>';
                                     }
                                 }
-                                echo '<span class="text-center">' .$userFirstName. ' ' .$userSecondName. '</span>';
+
                             } else {
                                 echo '<span class="text-center text-white"> Voľné </span>';
                             }
-
 
                         ?>
 
@@ -106,14 +94,14 @@
 
                 <?php
                 if ($auth->isLogged()) {
-                    foreach ($data['authorizations'] as $authorization) {
-                        if ($authorization->getUserId() == $auth->getLoggedUserId() && ($authorization->getPermissionId() == "3")) {
+
+                        if (($auth->isPermission("delete"))) {
                             echo ' <a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.delete", ['id' => $reservation->getId()]) .'">Vymazať Termín</a>';
                         }
-                        if ($authorization->getUserId() == $auth->getLoggedUserId() && ($authorization->getPermissionId() == "4")) {
+                        if (($auth->isPermission("admin"))) {
                             echo ' <a style="width: 200px;" id="cancel_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ['id' => $reservation->getId()]) .'">Zruš Klienta</a>';
                         }
-                    }
+
                 }
                 ?>
 
@@ -127,12 +115,9 @@
 
     <?php
     if ($auth->isLogged()) {
-        $authorizations = \App\Models\Authorization::getAll();
-        foreach ($authorizations as $authorization) {
-            if ($authorization->getUserId() == $auth->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+            if ($auth->isPermission("admin")) {
                 echo '<a class="fixed-button" href="'. $link->url('reservation.addReservation') .'">Pridaj Termín</a>';
             }
-        }
     }
     ?>
 

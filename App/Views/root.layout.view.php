@@ -67,14 +67,6 @@
                     <?php
                     if ($auth->isLogged()) {
                         echo '<li class="nav-item">  
-                               <a class="nav-link mx-lg-2" href="' . $link->url("auth.logout") . '">Odhlásiť</a>  
-                                </li>';
-                    }
-                    ?>
-
-                    <?php
-                    if ($auth->isLogged()) {
-                        echo '<li class="nav-item">  
                                <a class="nav-link mx-lg-2" href="' . $link->url("profile.index") . '">Profil</a>  
                                 </li>';
                     }
@@ -82,14 +74,19 @@
 
                     <?php
                     if ($auth->isLogged()) {
-                        $authorizations = \App\Models\Authorization::getAll();
-                        foreach ($authorizations as $authorization) {
-                            if ($authorization->getUserId() == $auth->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                            if ($auth->isPermission("admin")) {
                                 echo '<li class="nav-item">
                                             <a class="nav-link mx-lg-2" href="'. $link->url("admin.index") .'">Admin</a>
                                             </li>';
                             }
-                        }
+                    }
+                    ?>
+
+                    <?php
+                    if ($auth->isLogged()) {
+                        echo '<li class="nav-item">  
+                               <a class="nav-link mx-lg-2" href="' . $link->url("auth.logout") . '">Odhlásiť</a>  
+                                </li>';
                     }
                     ?>
 

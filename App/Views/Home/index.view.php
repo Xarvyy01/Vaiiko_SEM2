@@ -22,7 +22,7 @@
 
 <div class="margin"></div>
 
-<h1 class="title">Salón Sisa</h1>
+<h1 class="title text-white">Salón Sisa</h1>
 
 <div class="container-fluid mt-4">
     <div class="row">

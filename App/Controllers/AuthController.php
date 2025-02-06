@@ -19,6 +19,27 @@ use App\Models\Authorization;
  */
 class AuthController extends AControllerBase
 {
+
+    public function authorize(string $action)
+    {
+        switch($action) {
+
+            case "changePassword":
+            case "delete":
+            {
+                if (!($this->app->getAuth()->isPermission("admin"))) {
+                    return false;
+                }
+            }
+
+
+            default:
+                {
+                    return true;
+                }
+        }
+    }
+
     /**
      *
      * @return Response
@@ -181,6 +202,20 @@ class AuthController extends AControllerBase
 
         return $this->redirect($this->url('admin.index'));
 
+    }
+
+    public function changePassword(): Response {
+
+        $users = User::getAll("id=?", [$this->request()->getValue("id")]);
+
+        foreach ($users as $user) {
+
+            $user->setPassword(password_hash("Heslo123", PASSWORD_BCRYPT));
+            $user->save();
+
+        }
+
+        return $this->redirect($this->url("admin.index"));
     }
 
     public function checkDuplicity()

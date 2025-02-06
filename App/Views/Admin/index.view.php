@@ -24,16 +24,10 @@
 
 
 <section class="bg-transparent p-4" id="section">
-    <!-- .container – základný Bootstrap kontajner s postrannými odsadením -->
     <div class="container">
-        <!-- .row – riadok gridu -->
         <div class="row">
-            <!-- .col-12 – stĺpec, ktorý bude mať 100% šírku na všetkých zariadeniach.
-                 Môžete kombinovať s offsetmi alebo inými breakpointmi (napr. col-md-8 offset-md-2) -->
             <div class="col-12 contact-form" id="container">
-                <!-- .table-responsive – zaistí horizontálny scrollbar, ak by bola tabuľka široká -->
                 <div class="table-responsive text-center">
-                    <!-- Vlastné triedy: .custom-table, .table, .table-bordered, .table-hover, atď. -->
                     <table class="table table-striped table-hover table-bordered table-sm custom-table">
                         <thead class="custom-table-head">
                         <tr>
@@ -45,33 +39,35 @@
                             <th scope="col">Funkcie</th>
                         </tr>
                         </thead>
-
                         <tbody>
-                        <!-- Príklad generovania riadkov v PHP: -->
                         <?php $count = 0; ?>
                         <?php foreach ($data['users'] as $user) : ?>
                             <tr>
-                                <!-- miesto `<?= $count = $count + 1 ?>;` použite napr. -->
                                 <th scope="row"><?= ++$count ?></th>
                                 <td><?= $user->getId() ?></td>
                                 <td><?= $user->getNameFirst() ?></td>
                                 <td><?= $user->getNameSecond() ?></td>
                                 <td><?= $user->getEmail() ?></td>
-                                <td>
-                                    <!-- Tlačidlo, napr. na vymazanie, with link generator -->
-                                    <a class="btn btn-lg btn-light w-100 fs-6"
+                                <td class="d-flex gap-1">
+                                    <a class="btn btn-lg btn-light fs-6"
                                        href="<?= $link->url("auth.delete", ['id' => $user->getId()]) ?>">
                                         <small>Vymazať</small>
                                     </a>
+                                    <a class="btn btn-lg btn-light fs-6"
+                                       href="<?= $link->url("auth.changePassword", ['id' => $user->getId()]) ?>">
+                                        <small>Zmeniť Heslo</small>
+                                    </a>
                                 </td>
+
+
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
                     </table>
-                </div> <!-- .table-responsive -->
-            </div> <!-- .col-12 -->
-        </div> <!-- .row -->
-    </div> <!-- .container -->
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 

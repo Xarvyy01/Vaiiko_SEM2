@@ -62,7 +62,7 @@ document.getElementById('register_button').addEventListener('click', async funct
 
     }
 
-    if (password != password2 && length(password) >= 8) {
+    if (password != password2) {
         errors.push('Hesla sa nezhodujú');
     }
 
@@ -92,6 +92,8 @@ document.getElementById('register_button').addEventListener('click', async funct
         const ret = data["ret"];
         if (ret === false) {
             errors.push('Email už je zaregistrovaný');
+        } else {
+            alert('Účet úspešne zaregistrovaný')
         }
     }
 

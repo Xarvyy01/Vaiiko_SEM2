@@ -3,14 +3,11 @@
     border-spacing: 0;
     border-radius: 10px;
     overflow: hidden;
-    /* prípadne celkový okraj tabuľky, ak ho chcete:
-       border: 1px solid #000;
-    */
 }
 
 .custom-table th,
 .custom-table td {
-    border: 1px solid #000; /* čierna farba oddelovacích čiar */
+    border: 1px solid #000;
 }
 .custom-table-head {
     background-color: #a67c52;
@@ -20,10 +17,10 @@
 .contact-form {
     display: block;
     margin: 0 auto;
-    padding: 2rem 1rem; /* aby mala tabuľka okolo seba priestor */
+    padding: 2rem 1rem;
 }
 
-/* Len od stredných (alebo väčších) obrazoviek môžeme zachovať "flex" centrovanie */
+
 @media (min-width: 768px) {
     .contact-form {
         display: flex;

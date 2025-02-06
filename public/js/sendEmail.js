@@ -1,4 +1,10 @@
 function sendMail() {
+    (function(){
+        emailjs.init({
+            publicKey: "4h60vMsj0Bw1W_oGP",
+        });
+    })();
+
     let parms = {
         email: document.getElementById("email").value,
         subject: document.getElementById("subject").value,

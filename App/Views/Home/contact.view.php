@@ -18,13 +18,6 @@
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init({
-                publicKey: "4h60vMsj0Bw1W_oGP",
-            });
-        })();
-    </script>
     <script src="public/js/sendEmail.js"></script>
     <title>Title</title>
 </head>

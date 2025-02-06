@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/loginpage_style.css">
     <link rel="stylesheet" href="public/css/box_login.css">
+    <link rel="stylesheet" href="public/css/error.css">
     <title>Boostrap Login | Ludiflex</title>
 </head>
 <body>
 
 <main>
-
 
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
@@ -72,9 +72,9 @@
         <?php endif; ?>
     </div>
 
-    <div class="text-center">
+    <div class="error">
         <?php if ($data['errors'] != null) {
-            echo '<p>"' . $data['errors'][0] . '"</p>';
+            echo '<p class="text-center">"' . $data['errors'][0] . '"</p>';
         }
         ?>
     </div>

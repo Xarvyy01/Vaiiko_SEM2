@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="public/css//loginpage_style.css">
     <link rel="stylesheet" href="public/css/button_style.css">
     <link rel="stylesheet" href="public/css/box_login.css">
+    <link rel="stylesheet" href="public/css/error.css">
     <title>Boostrap Login | Ludiflex</title>
 </head>
 <body>
@@ -60,7 +61,7 @@
     </div>
     <div class="text-center">
         <?php if ($data['errors'] != null) {
-            echo '<p>"' . $data['errors'][0] . '"</p>';
+            echo '<p class="error">"' . $data['errors'][0] . '"</p>';
         }
         ?>
     </div>

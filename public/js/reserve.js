@@ -9,9 +9,6 @@ async function submit() {
         "names": names,
     };
 
-// Zrušte predvolené odoslanie formulára
-
-
 
     let response = await fetch(url, {
         method: "POST",

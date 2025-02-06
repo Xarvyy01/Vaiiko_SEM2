@@ -40,23 +40,13 @@
                             foreach ($data['users'] as $user)
                                 {
                                     if ($user->getId() == $review->getClientId()) {
-                                        $userFirstName = $user->getNameFirst();
-                                        $userSecondName = $user->getNameSecond();
+                                        echo '<span class="text-center text-white"> ' .$user->getNameFirst(). ' ' .$user->getNameSecond(). '</span>';
                                     }
                                 }
-                                echo '<span class="text-center text-white"> ' .$userFirstName. ' ' .$userSecondName. '</span>';
-
                         ?>
                         <?php
 
-                        $dateString = $review->getDate();
-                        $year = substr($dateString, 0, 4);
-                        $month = substr($dateString, 4, 2);
-                        $day = substr($dateString, 6, 2);
-
-
-                        $formattedDate = $day . '.' . $month . '.' . $year;
-                        echo '<span class="text-white">' . $formattedDate . '</span>';
+                        echo '<span class="text-white">' . substr($review->getDate(), 6, 2) . '.' . substr($review->getDate(), 4, 2) . '.' . substr($review->getDate(), 0, 4) . '</span>';
                         ?>
 
                     </div>
@@ -70,9 +60,11 @@
 
                 <?php
                     if ($auth->isLogged()) {
+                        if ($auth->isPermission("admin")) {
+                            echo '<a href="' . $link->url('review.delete', ['id' => $review->getId()]) .'" style="width: 200px;" id="delete_button" class="btn btn-lg btn-dark fs-6">Zmazať</a>';
+                        }
                         if ($review->getClientId() == $auth->getLoggedUserId()) {
                             echo '<a href="' . $link->url('review.redirectEdit', ['id' => $review->getId()]) .'" style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6">Upraviť</a>';
-                            echo '<a href="' . $link->url('review.delete', ['id' => $review->getId()]) .'" style="width: 200px;" id="delete_button" class="btn btn-lg btn-dark fs-6">Zmazať</a>';
                         }
                     }
 
@@ -87,7 +79,7 @@
     </div>
 
     <?php
-    if ($auth->isLogged()) {
+    if ($auth->isLogged() && $data['count'] == 0) {
         echo '<a class="fixed-button" href="'. $link->url('review.addReview') .'">Pridaj Recenziu</a>';
     }
     ?>

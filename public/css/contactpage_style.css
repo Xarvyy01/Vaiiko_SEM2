@@ -2,12 +2,12 @@ html, body {
 
     background-color: #3d2b1f;
 
-
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: repeat; /* Avoid repeating the image */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
 
 }

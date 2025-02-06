@@ -2,6 +2,8 @@
 
 namespace App\Auth;
 
+use App\Models\Authorization;
+use App\Models\Permission;
 use App\Models\User;
 use App\Core\IAuthenticator;
 
@@ -101,4 +103,24 @@ class DummyAuthenticator implements IAuthenticator
     {
         return $_SESSION['user'];
     }
+
+    public function isPermission($perm): bool {
+
+
+        $string = Permission::getAll("permission=?", [$perm]);
+        $final = '';
+
+        foreach ($string as $perms) {
+            $final = $perms->getId();
+        }
+
+        $authorizations = Authorization::getAll("user_id=? AND permission_id=?", [$this->getLoggedUserId(), $final]);
+        if ($authorizations != null) {
+            return true;
+        }
+
+        return false;
+
+    }
+
 }
