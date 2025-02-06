@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/loginpage_style.css">
     <link rel="stylesheet" href="public/css/reviewpage_style.css">
+    <link rel="stylesheet" href="public/css/fixedbutton.css">
 </head>
 <body>
 
@@ -123,6 +124,18 @@
     <?php endforeach; ?>
 
     </div>
+
+    <?php
+    if ($auth->isLogged()) {
+        $authorizations = \App\Models\Authorization::getAll();
+        foreach ($authorizations as $authorization) {
+            if ($authorization->getUserId() == $auth->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                echo '<a class="fixed-button" href="'. $link->url('reservation.addReservation') .'">Pridaj Termín</a>';
+            }
+        }
+    }
+    ?>
+
 
 </section>
 <script src="public/js/reserve.js"></script>

@@ -148,12 +148,14 @@ class AuthController extends AControllerBase
         foreach ($authorisations as $authorisation) {
             if ($authorisation->getUserId() == $id) {
                 $authorisation->delete();
+
             }
         }
 
         foreach ($reviews as $review) {
             if ($review->getClientId() == $id) {
-                $authorisation->delete();
+                $review->delete();
+
             }
         }
 

@@ -23,58 +23,50 @@
 
 
 
-    <div class="container d-flex justify-content-center align-items-center">
-
-
+    <div class="container d-flex justify-content-center align-items-center vh-100">
         <?php if ($data['review'] !== null): ?>
-        <form method="post" action="<?= $link->url('review.edit')?>">
-            <div class="row border rounded-5 p-3 shadow box-area">
-                <div class="col-md-12 right-box">
-                    <div class="row align-items-center">
-
-                        <div class="header-text mb-4">
+            <form method="post" action="<?= $link->url('review.edit') ?>">
+                <div class="row border rounded-5 p-3 shadow box-area w-100">
+                    <div class="col-12 right-box">
+                        <div class="header-text mb-4 text-center">
                             <h2>Recenzia</h2>
-                            <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
+                            <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zlepšiť</p>
                         </div>
                         <div class="input-group mb-4">
-                            <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" value="<?=htmlspecialchars($data['review']->getRating()) ?>">
+                            <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" value="<?= htmlspecialchars($data['review']->getRating()) ?>">
                         </div>
                         <div class="input-group">
-                            <textarea class="form-control mb-3" name="message" id="text" style="height: 7em; resize: none;"><?=htmlspecialchars($data['review']->getText())?></textarea>
-                        </div>
-                        <div class="input-group mb-5 d-flex justify-content-between">
+                            <textarea class="form-control mb-3" name="message" id="text" style="height: 7em; resize: none;"><?= htmlspecialchars($data['review']->getText()) ?></textarea>
                         </div>
                         <div class="input-group mb-3">
-                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Pridať</button>
+                            <button id="login_button" class="btn btn-dark w-100 fs-6 py-2">Pridať</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
         <?php else: ?>
+        <div class="container d-flex justify-content-center align-items-center vh-100">
             <form method="post" action="<?= $link->url('review.save')?>">
-             <div class="row border rounded-5 p-3 shadow box-area">
-
-                <div class="col-md-12 right-box">
-                    <div class="row align-items-center">
-                        <div class="header-text mb-4">
-                            <h2>Recenzia</h2>
-                            <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
-                        </div>
-                        <div class="input-group mb-4">
-                            <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Koľko bodov z 10?">
-                        </div>
-                        <div class="input-group">
-                            <textarea class="form-control mb-3" id="text" name="message" placeholder="Message" style="height: 7em; resize: none;"></textarea>
-                        </div>
-                        <div class="input-group mb-5 d-flex justify-content-between">
-                        </div>
-                        <div class="input-group mb-3">
-                            <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Pridať</button>
+                <div class="row border rounded-5 p-3 shadow box-area w-100">
+                    <div class="col-12 right-box">
+                        <div class="header-text mb-4 text-center">
+                                <h2>Recenzia</h2>
+                                <p>Môžete nás ohodnotiť a poradiť nám čo by sme mohli zepšiť</p>
+                            </div>
+                            <div class="input-group mb-4">
+                                <input id="rating" name="rating" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Koľko bodov z 10?">
+                            </div>
+                            <div class="input-group">
+                                <textarea class="form-control mb-3" id="text" name="message" placeholder="Message" style="height: 7em; resize: none;"></textarea>
+                            </div>
+                            <div class="input-group mb-5 d-flex justify-content-between">
+                            </div>
+                            <div class="input-group mb-3">
+                                <button id="login_button" class="btn btn-lg btn-dark w-100 fs-6">Pridať</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-             </div>
             </form>
         <?php endif; ?>
     </div>
