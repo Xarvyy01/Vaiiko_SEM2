@@ -60,7 +60,7 @@
 
                 <?php
                     if ($auth->isLogged()) {
-                        if ($auth->isPermission("admin")) {
+                        if ($auth->isPermission("admin") || $review->getClientId() == $auth->getLoggedUserId()) {
                             echo '<a href="' . $link->url('review.delete', ['id' => $review->getId()]) .'" style="width: 200px;" id="delete_button" class="btn btn-lg btn-dark fs-6">Zmazať</a>';
                         }
                         if ($review->getClientId() == $auth->getLoggedUserId()) {

@@ -30,7 +30,7 @@
 
 <section id="testimonials">
 
-    <div class="text-center">
+    <div class="text-center error">
         <?php if ($data['errors'] != null) {
             echo '<p class="text-center">' . $data['errors'][0] . '</p>';
         }
@@ -84,6 +84,11 @@
                     if ($auth->isLogged()) {
                         if ($reservation->getClientId() == $auth->getLoggedUserId()) {
                             echo '<a style="width: 200px;" id="login_button" class="btn btn-lg btn-dark fs-6" href="' . $link->url("reservation.cancel_reservation", ["id" => $reservation->getId()]) . '">Zruš Rezerváciu</a>';
+                        }
+                    }
+                    if ($auth->isLogged()) {
+                        if ($reservation->getClientId() != $auth->getLoggedUserId()) {
+                            echo '<p class="text-center">Termín už bol zarezervovaný!</p>';
                         }
                     } else {
                         echo '<p class="text-center">Termín už bol zarezervovaný!</p>';

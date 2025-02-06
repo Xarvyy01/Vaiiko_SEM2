@@ -49,13 +49,13 @@
                                 <td><?= $user->getNameSecond() ?></td>
                                 <td><?= $user->getEmail() ?></td>
                                 <td class="d-flex gap-1">
-                                    <a class="btn btn-lg btn-light fs-6"
+                                    <a class="btn btn-lg btn-outline-danger fs-6"
                                        href="<?= $link->url("auth.delete", ['id' => $user->getId()]) ?>">
                                         <small>Vymazať</small>
                                     </a>
-                                    <a class="btn btn-lg btn-light fs-6"
+                                    <a class="btn btn-lg btn-dark fs-6"
                                        href="<?= $link->url("auth.changePassword", ['id' => $user->getId()]) ?>">
-                                        <small>Zmeniť Heslo</small>
+                                        <small>Resetovať Heslo</small>
                                     </a>
                                 </td>
 

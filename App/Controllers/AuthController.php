@@ -31,8 +31,6 @@ class AuthController extends AControllerBase
                     return false;
                 }
             }
-
-
             default:
                 {
                     return true;
