@@ -43,6 +43,10 @@
                             <button id="login_button" class="btn btn-dark w-100 fs-6 py-2">Pridať</button>
                         </div>
                     </div>
+                    <?php if ($data['errors'] != null) {
+                        echo '<p class="text-center error">"' . $data['errors'][0] . '"</p>';
+                    }
+                    ?>
                 </div>
             </form>
         <?php else: ?>
@@ -67,17 +71,20 @@
                             </div>
                         </div>
                     </div>
+                <?php if ($data['errors'] != null) {
+                    echo '<p class="text-center error">"' . $data['errors'][0] . '"</p>';
+                }
+                ?>
                 </div>
             </form>
         <?php endif; ?>
+
     </div>
 
-    <div class="error">
-        <?php if ($data['errors'] != null) {
-            echo '<p class="text-center">"' . $data['errors'][0] . '"</p>';
-        }
-        ?>
-    </div>
+
+
+
+
 
 </main>
 

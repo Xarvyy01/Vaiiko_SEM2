@@ -148,7 +148,7 @@ class ReservationController extends AControllerBase
 
         }
 
-        if (strlen($firstHalf) == 2 && strlen($secondHalf) == 2 && is_numeric($firstHalf) && is_numeric($secondHalf) && (int) $firstHalf >= 0 && (int) $firstHalf <= 23 && (int) $firstHalf >= 0 && (int) $firstHalf <= 59)
+        if (strlen($firstHalf) == 2 && strlen($secondHalf) == 2 && is_numeric($firstHalf) && is_numeric($secondHalf) && (int) $firstHalf >= 0 && (int) $firstHalf <= 23 && (int) $firstHalf >= 0 && (int) $secondHalf <= 59)
         {
             $reservation->setTimeFrom($timeFrom);
         } else {

@@ -136,6 +136,7 @@ class ReviewController extends AControllerBase
 
     public function edit(): Response
     {
+        $errors =[];
         foreach (Review::getAll() as $review_temp) {
             if ($review_temp->getClientId() == $this->app->getAuth()->getLoggedUserId()) {
                 $id = $review_temp->getId();
@@ -143,7 +144,13 @@ class ReviewController extends AControllerBase
         }
         $review = Review::getOne($id);
         $review->setText($this->request()->getValue('message'));
-        $review->setRating($this->request()->getValue('rating'));
+
+        if (is_numeric($this->request()->getValue('rating')) && ($this->request()->getValue('rating') >= 0 && $this->request()->getValue('rating') <= 10)) {
+            $review->setRating($this->request()->getValue('rating'));
+        } else {
+            array_push($errors, 'Zle zadané číslo má byť od 0 po 10');
+            return $this->redirect($this->url("review.addReview", ["errors" => $errors]));
+        }
 
         $review->save();
         return $this->redirect($this->url("review.index"));
