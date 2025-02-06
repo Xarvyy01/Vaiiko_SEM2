@@ -1,6 +1,6 @@
 html, body{
     font-family: 'Poppins', sans-serif;
-    background-image: url('public/images/salon1.png') !important;;
+    background-color: #3d2b1f;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,7 +50,7 @@ html, body{
 .testimonial-box{
     width:500px;
     box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
-    background-color: #ffffff;
+    background-color: #BE9D6A;
     padding: 20px;
     margin: 15px;
     cursor: pointer;
@@ -129,6 +129,10 @@ html, body{
 ::selection{
     color: #ffffff;
     background-color: #252525;
+}
+
+.text-white {
+    color: white;
 }
 
 

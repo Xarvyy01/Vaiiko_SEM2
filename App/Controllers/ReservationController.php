@@ -81,17 +81,13 @@ class ReservationController extends AControllerBase
     public function reserve(): Response
     {
 
-        $reservations = Reservation::getAll();
+        $reservations = Reservation::getAll("client_id=?", [$this->app->getAuth()->getLoggedUserId()]);
         $count = 0;
         $errors = [];
 
-        foreach ($reservations as $reservation_temp) {
-            if ($reservation_temp->getClientId() == $this->app->getAuth()->getLoggedUserId()) {
-                $count = 1;
-            }
-        }
 
-        if ($count == 0) {
+
+        if ($reservations == null) {
             $id = $this->request()->getValue('id');
             $reservation = Reservation::getOne($id);
             $client_id = $this->app->getAuth()->getLoggedUserId();

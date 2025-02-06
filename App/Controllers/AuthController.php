@@ -125,6 +125,10 @@ class AuthController extends AControllerBase
             $authorization->setPermissionId(1);
             $authorization->save();
 
+            $picture = new Picture();
+            $picture->setUserId($user_id);
+            $picture->save();
+
 
             return $this->redirect($this->url("auth.login"));
 

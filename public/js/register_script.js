@@ -62,7 +62,7 @@ document.getElementById('register_button').addEventListener('click', async funct
 
     }
 
-    if (password != password2) {
+    if (password != password2 && length(password) >= 8) {
         errors.push('Hesla sa nezhodujú');
     }
 

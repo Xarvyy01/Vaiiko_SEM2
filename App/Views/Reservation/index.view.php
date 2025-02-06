@@ -75,7 +75,7 @@
                                 }
                                 echo '<span class="text-center">' .$userFirstName. ' ' .$userSecondName. '</span>';
                             } else {
-                                echo '<span class="text-center"> Voľné </span>';
+                                echo '<span class="text-center text-white"> Voľné </span>';
                             }
 
 

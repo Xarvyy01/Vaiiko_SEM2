@@ -44,7 +44,7 @@
                                         $userSecondName = $user->getNameSecond();
                                     }
                                 }
-                                echo '<span class="text-center"> ' .$userFirstName. ' ' .$userSecondName. '</span>';
+                                echo '<span class="text-center text-white"> ' .$userFirstName. ' ' .$userSecondName. '</span>';
 
                         ?>
                         <?php
@@ -56,7 +56,7 @@
 
 
                         $formattedDate = $day . '.' . $month . '.' . $year;
-                        echo '<span>' . $formattedDate . '</span>';
+                        echo '<span class="text-white">' . $formattedDate . '</span>';
                         ?>
 
                     </div>

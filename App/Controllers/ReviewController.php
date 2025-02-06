@@ -15,7 +15,12 @@ class ReviewController extends AControllerBase
     {
         switch ($action) {
 
-            case "add_review":
+            case "addReview": {
+                if ($this->app->getAuth()->isLogged()) {
+                    return true;
+                }
+                return false;
+            }
             case "save": {
                 if ($this->app->getAuth()->isLogged() && $this->hasUserReview($this->app->getAuth()->getLoggedUserId()) == false) {
                     return true;
