@@ -14,7 +14,7 @@ class ReviewController extends AControllerBase
     public function authorize(string $action)
     {
         switch ($action) {
-
+            case "edit":
             case "addReview": {
                 if ($this->app->getAuth()->isLogged()) {
                     return true;
