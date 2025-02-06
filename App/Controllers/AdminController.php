@@ -24,7 +24,7 @@ class AdminController extends AControllerBase
         if ($this->app->getAuth()->isLogged()) {
             $authorizations = Authorization::getAll();
             foreach ($authorizations as $authorization) {
-                if ($authorization->getUserId() == $this->app->getAuth()->getLoggedUserId() && $authorization->getPermissionId() == "4") {
+                if ($authorization->getUserId() == $this->app->getAuth()->getLoggedUserId() && $this->app->getAuth()->isPermission("admin")) {
                     return true;
                 }
             }
